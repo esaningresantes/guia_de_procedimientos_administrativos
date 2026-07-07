@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Procedimientos Administrativos DPA 2026-1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --esan-red: #E3173E;
+            --esan-red-dark: #AE0800;
+            --esan-gray: #696A6D;
+            --esan-gray-dark: #4E5054;
+            --esan-gray-light: #F4F4F5;
+            --esan-border: #E5E7EB;
+            --esan-blue-light: #B2DDEA;
+        }
+
+        body { background-color: #FFFFFF; color: var(--esan-gray-dark); font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--esan-border);
+        }
+
+        .menu-btn {
+    background: var(--esan-red);
+    color: #ffffff;
+}
+
+.menu-btn:hover {
+    background: var(--esan-gray);
+    color: #ffffff;
+}
+
+.active-tab {
+    background: var(--esan-red-dark) !important;
+    color: #ffffff;
+    font-weight: bold;
+    border-left: 4px solid #ffffff;
+}
+
+.sidebar-red {
+    background: var(--esan-red);
+}
+
+.topbar-red {
+    background: var(--esan-red);
+}
+
+.card-gray {
+    background: var(--esan-gray-light);
+    border: 1px solid var(--esan-border);
+}
+
+.card-red {
+    background: #FDEBEC;
+    border: 1px solid var(--esan-border);
+}
+
+        ::-webkit-scrollbar { width: 6px; background: #F4F4F5; }
+        ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 4px; }
+
+*{
+    box-sizing:border-box;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+table{
+    width:100%;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* Evita zoom raro en iPhone */
+input,
+select,
+textarea{
+    font-size:16px;
+}
+
+/* Mejora responsive en móviles */
+@media (max-width: 768px){
+
+    h1{
+        font-size:1.8rem !important;
+    }
+
+    h2{
+        font-size:1.5rem !important;
+    }
+
+    h3{
+        font-size:1.1rem !important;
+    }
+
+    .glass{
+        padding:1rem !important;
+    }
+
+}
+    </style>
+</head>
+<body class="min-h-screen flex flex-col md:flex-row bg-white overflow-x-hidden" id="app">
+
+<!-- PANTALLA INICIAL -->
+<div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-[9999] flex items-center justify-center p-4">
+
+    <div class="glass p-8 rounded-2xl w-full max-w-md text-center space-y-5 border border-gray-200 shadow-2xl">
+
+        <!-- TÍTULO -->
+        <div>
+            <h2 class="text-3xl text-gray-900 font-serif">
+                Guía DPA 2026-1
+            </h2>
+
+            <p class="text-sm text-gray-500 mt-2">
+                Bienvenido(a) a la Universidad ESAN
+            </p>
+        </div>
+
+        <!-- INFORMACIÓN -->
+        <div class="bg-gray-50 p-4 rounded-xl text-left space-y-3 border border-gray-100">
+
+            <p class="text-sm text-gray-700 leading-relaxed">
+                La guía contiene los procedimientos administrativos que debes seguir luego de haber aprobado el proceso de admisión al DPA.
+            </p>
+
+            <p class="text-sm text-gray-600 leading-relaxed">
+                En ella encontrarás información sobre matrícula, pagos, convalidaciones, examen de inglés y calendario académico, entre otros.
+            </p>
+
+            <p class="text-sm text-gray-600 leading-relaxed">
+                Revisa cuidadosamente la información y considera las indicaciones, procedimientos y plazos señalados.
+            </p>
+
+        </div>
+
+        <!-- DNI -->
+        <input
+            type="text"
+            id="dni"
+            maxlength="8"
+            placeholder="Ingresa tu DNI"
+            class="w-full p-3 rounded-xl bg-white text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500"
+        >
+
+        <!-- CHECK -->
+        <label class="flex items-start gap-3 text-sm text-gray-600 text-left">
+            <input type="checkbox" id="check" class="mt-1 accent-red-600">
+
+            <span>
+                Me comprometo a revisar y seguir la información contenida en la Guía de Procedimientos Administrativos DPA 2026-1.
+            </span>
+        </label>
+
+        <!-- BOTÓN -->
+        <button onclick="ingresar()"
+            class="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-xl text-white font-semibold w-full shadow-lg">
+            Ingresar a la guía
+        </button>
+
+        <!-- ERROR -->
+        <p id="error" class="text-red-600 text-sm hidden"></p>
+
+    </div>
+</div>
+
+    <!-- ASIDE -->
+    <aside id="sidebar" class="fixed md:relative inset-y-0 left-0 z-50 w-72 sidebar-red flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 shadow-2xl md:shadow-none">
+        <div class="p-6 border-b border-white/20 flex items-center gap-3 cursor-pointer" onclick="renderContent('welcome')">
+    		<div class="w-10 h-10 bg-white rounded flex items-center justify-center text-2xl font-bold text-[var(--esan-red)]">UE</div>
+    		<div>
+       		 <h1 class="text-white text-lg leading-none">ESAN UNIVERSITY</h1>
+        	<p class="text-[10px] text-white/80 uppercase tracking-widest">DPA · Guía 2026-1</p>
+    		</div>
+		</div>
+        <div class="flex-1 overflow-y-auto py-2" id="menu-container"></div>
+        <div class="p-4 text-center text-xs text-white/70 border-t border-white/20">
+   			 Documento Oficial · DPA
+		</div>
+    </aside>
+
+    <!-- MAIN -->
+   <main class="flex-1 relative bg-[var(--esan-gray-light)] flex flex-col min-w-0 overflow-y-auto">
+    <!-- TOP BAR -->
+    <div class="h-16 border-b border-gray-200 flex items-center px-4 gap-4 bg-white/90 backdrop-blur z-10">
+
+    <button onclick="toggleMenu()" class="md:hidden text-gray-700">
+        <i data-lucide="menu"></i>
+    </button>
+
+    <i data-lucide="search" class="text-gray-400"></i>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Buscar (ej: convalidación, pronto pago, inglés)..."
+        class="bg-transparent w-full text-gray-900 focus:outline-none placeholder-gray-400"
+ 	   >
+	</div>
+
+  <!-- CONTENIDO -->
+<div id="viewer" class="flex-1 overflow-y-auto p-4 sm:p-6 md:p-10 scroll-smooth w-full">
+</div>
+
+</main>
+
+<script>
+const db = {
+
+welcome: {
+title:"Inicio",
+icon:"home",
+html:`
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s]">
+
+    <!-- HERO -->
+    <div class="relative w-full h-72 md:h-96 rounded-3xl overflow-hidden mb-10 shadow-lg border border-gray-200">
+
+        <img
+    src="https://www.esan.edu.pe/images/blog/2018/04/10/esan-fachada-licenciamiento-facebook.jpg"
+    class="w-full h-full object-cover transition duration-700 hover:scale-105"
+    style="object-position: center 60%;"
+    alt="ESAN">
+	<div class="absolute inset-0 bg-gradient-to-b from-[#AE0800]/75 via-[#E3173E]/15 to-transparent"></div>
+
+		<div class="absolute inset-0 flex items-start">
+   		 <div class="p-8">
+
+        	<h2 class="text-4xl md:text-5xl font-serif text-white drop-shadow">
+           		 Bienvenidos al DPA
+        	</h2>
+
+    		</div>
+		</div>
+
+    </div>
+
+    <!-- INTRO -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+
+        <h1 class="text-3xl md:text-4xl text-gray-900 font-serif mb-4">
+            Guía de Procedimientos Administrativos DPA 2026-1
+        </h1>
+
+        <p class="text-gray-600 leading-relaxed">
+            En este catálogo interactivo encontrarás los procedimientos administrativos a seguir luego de haber sido aceptado(a) en el DPA de la Universidad ESAN: matrícula, pagos, convalidaciones, beneficios, examen de inglés y calendario académico.
+        </p>
+
+    </div>
+
+    <!-- ACCESOS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 text-left">
+
+        <button onclick="renderContent('I')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">📘 I. Generalidades</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Objetivo, alcance y definiciones clave.</p>
+        </button>
+
+        <button onclick="renderContent('II')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">📝 II. Matrícula y cuotas</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Primera boleta, valor del crédito y cálculo de cuotas.</p>
+        </button>
+
+        <button onclick="renderContent('III')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">💳 III. Medios de pago</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Bancos, modalidades de pago y derechos de enseñanza.</p>
+        </button>
+
+        <button onclick="renderContent('IV')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">🔑 IV. Credenciales</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Código de alumno, usuario y contraseña.</p>
+        </button>
+
+        <button onclick="renderContent('V')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">🔁 V. Convalidación</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Requisitos, costos y procedimiento.</p>
+        </button>
+
+        <button onclick="renderContent('VI')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">🎁 VI. Descuento pronto pago</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">10% de descuento por pago adelantado.</p>
+        </button>
+
+        <button onclick="renderContent('VII')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">🧾 VII. Reserva y vacante</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Reserva de admisión y pérdida de vacante.</p>
+        </button>
+
+        <button onclick="renderContent('VIII')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">🌎 VIII. Examen de inglés</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Examen de clasificación y formas de acreditación.</p>
+        </button>
+
+        <button onclick="renderContent('IX')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">⚖️ IX. Reglamentos</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Disposiciones normativas de ESAN.</p>
+        </button>
+
+        <button onclick="renderContent('X')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">📅 X. Calendario académico</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Fechas de los módulos 1 y 2 del ciclo 2026-1.</p>
+        </button>
+
+        <button onclick="renderContent('XI')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">📎 XI. Anexo 1</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Conceptos no sujetos a devolución.</p>
+        </button>
+
+        <button onclick="renderContent('XII')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">☎️ XII. Contacto</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Coordinación DPA y horarios de atención.</p>
+        </button>
+
+    </div>
+
+</div>
+`
+},
+
+// I. GENERALIDADES
+I: {
+title: "I. Generalidades",
+icon: "book-open",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="book-open" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección I
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Generalidades
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- OBJETIVO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-4">
+
+            <i data-lucide="target" class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">Objetivo</h3>
+
+        </div>
+
+        <p class="text-gray-700 leading-relaxed">
+            El presente documento tiene por objeto informar a los postulantes aceptados al DPA de la Universidad ESAN sobre los diferentes procedimientos administrativos a seguir luego de haber aprobado el proceso de admisión correspondiente.
+        </p>
+
+    </div>
+
+    <!-- ALCANCE -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-5">
+
+            <i data-lucide="scale" class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">Alcance</h3>
+
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+            Las normas contenidas en esta guía aplican al ingresante del DPA aceptado bajo cualquiera de las modalidades de admisión de la Universidad ESAN. La categoría de ingresante se confiere luego de presentar todos los documentos según su modalidad de ingreso:
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+
+                <i data-lucide="graduation-cap" class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold text-gray-900 mb-2">Estudios superiores completos</h4>
+
+                <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                    Haber concluido estudios superiores en una Universidad o Instituto Superior.
+                </p>
+
+                <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                    <li>Constancia de Egresado.</li>
+                    <li>Certificados de estudios superiores originales, autenticados por la secretaría general correspondiente o autoridad equivalente.</li>
+                </ul>
+
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+
+                <i data-lucide="book-open-check" class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold text-gray-900 mb-2">Estudios superiores incompletos</h4>
+
+                <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                    Haber aprobado al menos 72 créditos académicos o 2 años completos de estudios regulares.
+                </p>
+
+                <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                    <li>Certificados de estudios superiores originales, autenticados.</li>
+                    <li>Constancia de conducta de no haber sido separado por medidas disciplinarias.</li>
+                </ul>
+
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+
+                <i data-lucide="file-check" class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold text-gray-900 mb-2">Sin estudios superiores</h4>
+
+                <p class="text-sm text-gray-700 leading-relaxed mb-3">
+                    Postulantes que no cuentan con estudios superiores previos.
+                </p>
+
+                <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                    <li>Certificado oficial de estudios de 1° a 5° de secundaria (original).</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DEFINICIONES -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+
+            <i data-lucide="list" class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">Definiciones</h3>
+
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Anulación de vacante por omisión</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Proceso que faculta a la Universidad a anular la vacante obtenida, sin derecho a reclamo, en casos de incumplimiento de entrega de documentos, matrícula, reserva de admisión u otros afines, dentro de las fechas establecidas.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Derechos de enseñanza</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Boletas o cuotas de pago por los servicios académicos que se imparten en la Universidad. En el ciclo académico se cancelan cinco boletas o cuotas.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Derecho de matrícula</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Pago que se efectúa al inicio de cada semestre académico por todos los gastos vinculados con la matrícula. No es materia de devolución. Monto: <strong>S/ 300.00</strong> para el presente año académico.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Descuento pronto pago</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Descuento del 10% que se otorga a quienes deseen cancelar de forma adelantada el valor completo del ciclo académico. Se aplica sólo a los derechos de enseñanza (no incluye la matrícula). Ver sección VI.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Gastos administrativos</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Gastos por devolución y servicios adicionales que el alumno solicita, no considerados en el pago de matrícula ni en el pago de derechos académicos.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Admitido</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Persona que ha superado el proceso de admisión y obtenido vacante, pendiente de cumplir con la entrega total de documentos y el pago correspondiente.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Ingresante</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Postulante admitido que ha presentado la totalidad de documentos exigidos y se encuentra habilitado para realizar su matrícula.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Alumno</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Ingresante que ha efectuado matrícula y pago correspondiente, adquiriendo la condición de estudiante regular.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Reserva de admisión</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Procedimiento que faculta al ingresante a suspender el inicio de sus estudios luego de haber sido aceptado, conservando su vacante para el siguiente o subsiguiente ciclo académico. Solo pueden acceder quienes hayan entregado todos los requisitos de admisión. El pago no es materia de devolución. Ver sección VII.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Reserva de matrícula</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Procedimiento que faculta al alumno a no seguir estudios durante uno o dos semestres académicos ordinarios, anulando la matrícula del ciclo solicitado, pero conservando el derecho de matricularse en el ciclo académico correspondiente. El pago no es materia de devolución.</p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+                <h4 class="font-semibold text-gray-900 mb-1">Retiro de ciclo</h4>
+                <p class="text-sm text-gray-700 leading-relaxed">Decisión formal manifestada por escrito por el alumno de no continuar cursando las asignaturas en las que fue matriculado en un ciclo académico regular. No procede en el periodo de cursos de verano.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+`
+},
+
+// II. MATRÍCULA Y CUOTAS
+II: {
+title: "II. Matrícula y Cuotas",
+icon: "file-check",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="file-check" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección II · 2.1
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Matrícula y cuotas por derechos académicos
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PRIMERA BOLETA -->
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="receipt" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Primera boleta</h3>
+            </div>
+
+            <p class="text-5xl font-bold text-[var(--esan-red)] mb-4">S/ 1,450.00</p>
+
+            <p class="text-gray-700 leading-relaxed">
+                Incluye el derecho de matrícula (<strong>S/ 300.00</strong>) y la primera cuota de derechos de enseñanza. Quienes resulten admitidos y hayan presentado los documentos solicitados por la Oficina de Admisión de Pregrado deberán efectuar este pago para poder matricularse.
+            </p>
+
+            <div class="mt-5 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    No estarán habilitados para pagar la primera boleta (incluye matrícula) quienes tengan documentación pendiente de entrega a la Oficina de Admisión.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="calculator" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Valor del crédito</h3>
+            </div>
+
+            <p class="text-5xl font-bold text-[var(--esan-red)] mb-4">S/ 230.00</p>
+
+            <p class="text-gray-700 leading-relaxed">
+                El cálculo de las boletas de pago para los alumnos ingresantes se realiza en función al número de créditos matriculados, considerando este valor por crédito para las carreras del DPA.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- EJEMPLO 20 CRÉDITOS - REGULAR -->
+
+    <div class="glass rounded-2xl overflow-hidden border-l-4 border-[var(--esan-red)]">
+
+        <div class="px-7 py-6 border-b border-gray-200">
+            <div class="flex items-center gap-3">
+                <i data-lucide="table" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Ejemplo: alumno matriculado en 20 créditos</h3>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
+                        <th class="px-6 py-4 text-left">Boleta</th>
+                        <th class="px-6 py-4 text-right">Matrícula (S/)</th>
+                        <th class="px-6 py-4 text-right">Derechos de enseñanza (S/)</th>
+                        <th class="px-6 py-4 text-right">Total (S/)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">1ra. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-700">1,150.00</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">1,450.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">2da. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">3ra. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">4ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">5ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="bg-gray-50 font-bold">
+                        <td class="px-6 py-4 text-gray-900">Total</td>
+                        <td class="px-6 py-4 text-right text-gray-900">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-900">4,600.00</td>
+                        <td class="px-6 py-4 text-right text-[var(--esan-red)]">4,900.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="px-7 py-4 text-sm text-gray-500 leading-relaxed border-t border-gray-200">
+            Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre. Estos montos no consideran descuentos comerciales.
+        </p>
+
+    </div>
+
+    <!-- EJEMPLO 20 CRÉDITOS - CONVENIO -->
+
+    <div class="glass rounded-2xl overflow-hidden border-l-4 border-[var(--esan-red)]">
+
+        <div class="px-7 py-6 border-b border-gray-200">
+            <div class="flex items-center gap-3">
+                <i data-lucide="handshake" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Alumnos provenientes de instituciones con convenio</h3>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
+                        <th class="px-6 py-4 text-left">Boleta</th>
+                        <th class="px-6 py-4 text-right">Matrícula (S/)</th>
+                        <th class="px-6 py-4 text-right">Derechos de enseñanza (S/)</th>
+                        <th class="px-6 py-4 text-right">Total (S/)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">1ra. Boleta**</td>
+                        <td class="px-6 py-4 text-right text-gray-700">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-700">1,035.00</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">1,335.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">2da. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">3ra. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">4ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">5ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="bg-gray-50 font-bold">
+                        <td class="px-6 py-4 text-gray-900">Total</td>
+                        <td class="px-6 py-4 text-right text-gray-900">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-900">4,140.00</td>
+                        <td class="px-6 py-4 text-right text-[var(--esan-red)]">4,440.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="px-7 py-4 text-sm text-gray-500 leading-relaxed border-t border-gray-200">
+            Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre.
+        </p>
+
+    </div>
+
+    <!-- INFORMACIÓN IMPORTANTE -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-5">
+            <i data-lucide="info" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Información importante</h3>
+        </div>
+
+        <ul class="list-disc pl-6 space-y-3 text-gray-700 leading-relaxed">
+            <li>Cualquier modificación a los montos de pensiones será comunicada oportunamente.</li>
+            <li>El pago por derechos académicos podrá realizarse en los bancos detallados en la sección III, indicando en ventanilla la modalidad de pago y el código de alumno, o a través de la banca por internet.</li>
+            <li>Para revisar pagos pendientes, boletas vencidas y otros detalles, el alumno puede ingresar a <strong>Estado de Cuenta y Pagos Visa</strong> en el Menú Principal de la plataforma virtual (ruta: Mi Portal / Académico / Pagos / Pagos Visa) o mediante <a href="https://pagos.esan.edu.pe/alumno/inicio/logon" target="_blank" class="text-[var(--esan-red)] font-semibold hover:underline">pagos.esan.edu.pe</a>. También permite pagos en línea con tarjetas de crédito, ingresando el código de alumno y el DNI.</li>
+            <li>En caso de incumplimiento en el pago de boletas vencidas, la Universidad ESAN queda facultada a trasladar la documentación a su área legal para las acciones de recuperación de deuda, tercerizar la cobranza o transferir los derechos de cobro a terceros, respetando la normativa de protección de datos. Asimismo, podrá reportar a las Centrales de Riesgo, conforme a la normativa vigente.</li>
+        </ul>
+
+    </div>
+
+</div>
+`
+},
+
+// III. MEDIOS DE PAGO
+III: {
+title: "III. Medios de Pago",
+icon: "credit-card",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="credit-card" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección III · 2.2 y 2.3
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Detalle de pagos y derechos de enseñanza
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BANCOS -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="landmark" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Bancos habilitados (sin recargo)</h3>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+            Los pagos de las boletas pueden realizarse en los siguientes bancos indicando la modalidad y el código de alumno que identificará el pago realizado:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <i data-lucide="building-2" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                    <h4 class="text-lg font-serif text-gray-900">Banco de Crédito (BCP)</h4>
+                </div>
+                <p class="text-sm text-gray-700">
+                    Modalidad de pago: <strong>UNIVERSIDAD ESAN PREGRADO PENSION SOLES</strong>
+                </p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <div class="flex items-center gap-3 mb-3">
+                    <i data-lucide="building-2" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                    <h4 class="text-lg font-serif text-gray-900">BBVA</h4>
+                </div>
+                <p class="text-sm text-gray-700">
+                    Modalidad de pago: <strong>ESAN PENSIONES SOLES</strong>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DERECHOS DE ENSEÑANZA -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="wallet" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Pago de derechos de enseñanza</h3>
+        </div>
+
+        <ul class="list-disc pl-6 space-y-4 text-gray-700 leading-relaxed">
+            <li>Los derechos de enseñanza del DPA se calculan en función al valor del crédito, cuyo monto asciende a <strong>S/ 230.00</strong>.</li>
+            <li>El cálculo se realiza en función al número de créditos matriculados en cada semestre.</li>
+            <li>El monto de los derechos académicos podrá ser actualizado en ciclos posteriores por motivo de inflación y/o aumento de precios de bienes y servicios necesarios para la continuidad del servicio educativo, observando los procedimientos y disposiciones legales vigentes. Cualquier modificación será comunicada antes del inicio del proceso de matrícula del ciclo correspondiente.</li>
+        </ul>
+
+    </div>
+
+</div>
+`
+},
+
+// IV. CREDENCIALES
+IV: {
+title: "IV. Credenciales",
+icon: "key-round",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="key-round" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección IV · 2.4
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Entrega de credenciales y contraseñas
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+
+            <p>
+                Los ingresantes recibirán en su correo electrónico personal el número de código de alumno asignado.
+            </p>
+
+            <p>
+                Asimismo, se entregará el usuario y contraseña de acceso al portal de alumnos y al correo electrónico institucional.
+            </p>
+
+        </div>
+
+        <div class="mt-6 rounded-xl bg-red-50 border border-red-200 p-5 flex gap-4">
+            <i data-lucide="shield-alert" class="w-6 h-6 text-[var(--esan-red)] mt-1"></i>
+            <p class="text-gray-700 leading-relaxed">
+                El uso de dichos accesos es <strong>personal e intransferible</strong>.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+`
+},
+
+// V. CONVALIDACIÓN
+V: {
+title: "V. Convalidación",
+icon: "arrow-right-left",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="arrow-right-left" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección V · 2.5
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Convalidación
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- COSTOS -->
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="receipt" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Solicitud de convalidación</h3>
+            </div>
+            <p class="text-4xl font-bold text-[var(--esan-red)] mb-3">S/ 100.00</p>
+            <p class="text-sm text-gray-700 leading-relaxed">No sujeto a devolución. Las cuentas de pago se remiten por correo.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="book-copy" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Derechos académicos por curso convalidado</h3>
+            </div>
+            <p class="text-4xl font-bold text-[var(--esan-red)] mb-3">S/ 250.00</p>
+            <p class="text-sm text-gray-700 leading-relaxed">Costo por cada curso convalidado, adicional a la solicitud.</p>
+        </div>
+
+    </div>
+
+    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] p-6">
+        <p class="text-gray-700 leading-relaxed">
+            <strong>Los pagos indicados no están sujetos a devolución por ningún concepto.</strong>
+        </p>
+    </div>
+
+    <!-- PROCEDIMIENTO -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="clipboard-list" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Procedimiento</h3>
+        </div>
+
+        <div class="space-y-5">
+
+            <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                <p class="text-gray-700 leading-relaxed">El ingresante, una vez admitido, envía la solicitud de convalidación y los sílabos de los cursos a convalidar al asesor de inscripción asignado.</p>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                <p class="text-gray-700 leading-relaxed">Los documentos necesarios son los sílabos de los cursos y certificados de notas, debidamente visados y sellados por la Secretaría General de la universidad de procedencia o autoridad equivalente.</p>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                <p class="text-gray-700 leading-relaxed">El expediente completo se presenta en la Coordinación Académica del DPA junto con la boleta del pago correspondiente y una carta dirigida al Director del DPA solicitando la evaluación del expediente.</p>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
+                <p class="text-gray-700 leading-relaxed">La solicitud se presenta dentro del plazo establecido en el calendario académico; es el único momento en que puede realizarse el trámite. Las convalidaciones se hacen efectivas una vez aprobados los cursos que son requisito de aquellos convalidados.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONDICIONES -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="badge-info" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Condiciones</h3>
+        </div>
+
+        <ul class="list-disc pl-6 space-y-4 text-gray-700 leading-relaxed">
+            <li>Solo pueden presentar solicitud de convalidaciones quienes postularon bajo las modalidades de estudios superiores completos o incompletos.</li>
+            <li>La convalidación procede cuando los contenidos y competencias adquiridas correspondan a la asignatura a convalidar, con una antigüedad máxima de <strong>8 años</strong>. La Universidad puede requerir un examen de los cursos materia de convalidación cuando lo considere necesario.</li>
+            <li>El alumno proveniente de un instituto con convenio de convalidación de cursos suscrito está exonerado del procedimiento y de los pagos descritos, siempre que se cumpla la antigüedad indicada. Estas convalidaciones se realizan de manera automática. Si desea convalidar cursos adicionales a los del convenio, deberá seguir el procedimiento regular.</li>
+        </ul>
+
+    </div>
+
+</div>
+`
+},
+
+// VI. DESCUENTO PRONTO PAGO
+VI: {
+title: "VI. Descuento Pronto Pago",
+icon: "badge-percent",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="badge-percent" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección VI · 2.7
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Descuento por pronto pago
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="rounded-2xl overflow-hidden shadow-xl">
+        <div class="bg-gradient-to-r from-[var(--esan-red)] to-[var(--esan-red-dark)] px-8 py-8 text-white">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center">
+                    <i data-lucide="gift" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <p class="uppercase tracking-widest text-white/80 text-sm">Beneficio</p>
+                    <h3 class="text-2xl font-serif mt-1">10% de descuento</h3>
+                    <p class="text-white/90 mt-2">Sobre el pago de derechos académicos del ciclo, aplicable de la segunda a la quinta boleta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONDICIONES -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="clipboard-list" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Condiciones</h3>
+        </div>
+
+        <ul class="list-disc pl-6 space-y-4 text-gray-700 leading-relaxed">
+            <li>Se aplica únicamente en los ciclos regulares y a alumnos regulares (matriculados en más de 12 créditos académicos).</li>
+            <li>No se aplica al pago del derecho de matrícula.</li>
+            <li>Para acogerse al descuento, el alumno debe inscribirse mediante un formulario publicado en la plataforma virtual, en la fecha indicada en el calendario de finanzas del DPA.</li>
+            <li>De no presentarse la solicitud en la fecha indicada, se deberá efectuar el pago normal de las boletas según el calendario académico.</li>
+            <li>Efectuado el pago total del ciclo, no se aceptan devoluciones o regularizaciones posteriores, salvo en los supuestos establecidos en la normativa vigente y los reglamentos institucionales aplicables.</li>
+        </ul>
+
+    </div>
+
+    <!-- RETIRO -->
+
+    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] p-6">
+        <div class="flex items-start gap-4">
+            <i data-lucide="alert-triangle" class="w-5 h-5 text-[var(--esan-red)] mt-1 flex-shrink-0"></i>
+            <div>
+                <h4 class="font-semibold text-gray-900 mb-2">En caso de retiro</h4>
+                <p class="text-gray-700 leading-relaxed">
+                    En caso de retiro voluntario de uno o más cursos, módulo o ciclo académico, se realizará una nueva liquidación considerando la carga académica efectiva del alumno, tomando como base el valor regular vigente de los derechos académicos, sin aplicar el descuento por pronto pago otorgado inicialmente, el cual queda sin efecto desde el momento del retiro. Esta disposición no aplica cuando el retiro se origine por causas imputables a la Universidad que imposibiliten la prestación del servicio educativo contratado.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+`
+},
+
+// VII. RESERVA DE ADMISIÓN Y PÉRDIDA DE VACANTE
+VII: {
+title: "VII. Reserva y Vacante",
+icon: "calendar-clock",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="calendar-clock" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección VII · 2.8 y 2.9
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Reserva de admisión y pérdida de vacante
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- RESERVA -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="calendar-days" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">¿Qué permite la reserva de admisión?</h3>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-6">
+            El ingresante que se registra en una reserva de admisión puede postergar el inicio de sus estudios hasta por <strong>dos periodos académicos consecutivos</strong> (un año), activándose la matrícula del siguiente y subsiguiente semestre. Si no registra su matrícula en uno de estos dos periodos, la reserva caduca y debe volver a postular.
+        </p>
+
+        <h4 class="font-semibold text-gray-900 mb-4">Requisitos</h4>
+
+        <ul class="space-y-4 mb-6">
+            <li class="flex gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-[var(--esan-red)] mt-1"></i>
+                <span class="text-gray-700">Haber cumplido con la entrega de todos los requisitos de admisión según su modalidad. Si existe algún documento pendiente, no se podrá registrar la reserva.</span>
+            </li>
+            <li class="flex gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-[var(--esan-red)] mt-1"></i>
+                <span class="text-gray-700">Realizar el pago de <strong>S/ 300.00</strong>, no sujeto a devolución luego del registro.</span>
+            </li>
+        </ul>
+
+        <h4 class="font-semibold text-gray-900 mb-4">Procedimiento</h4>
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 text-gray-700 leading-relaxed">
+            <p>
+                Comunicarse al correo
+                <a href="mailto:admisionpregrado@esan.edu.pe" class="font-semibold text-[var(--esan-red)] hover:underline">admisionpregrado@esan.edu.pe</a>
+                indicando el interés por gestionar la reserva de admisión y detallando el nombre completo del ingresante y su número de DNI.
+            </p>
+            <p>
+                Se responderá con los datos de los medios de pago disponibles. Luego de pagar, se debe enviar el comprobante al mismo correo. Se realizará el registro y se comunicará al ingresante, quien podrá descargar su constancia de reserva en el portal de resultados de admisión.
+            </p>
+        </div>
+
+        <div class="mt-6 rounded-xl bg-red-50 border border-red-200 p-5 flex gap-4">
+            <i data-lucide="clock" class="w-6 h-6 text-[var(--esan-red)] mt-1"></i>
+            <div>
+                <h4 class="font-semibold text-gray-900">Plazo límite</h4>
+                <p class="text-gray-700">Último día hábil del mes en que inician las matrículas.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- IMPORTANTE -->
+
+    <div class="rounded-2xl bg-blue-50 border-l-4 border-blue-400 p-6 flex gap-4">
+        <i data-lucide="info" class="w-5 h-5 text-blue-600 mt-1"></i>
+        <p class="text-gray-700 leading-relaxed">
+            El alumno que se incorpora a su primera matrícula luego de una reserva de admisión deberá conocer y aceptar los reglamentos vigentes del periodo y las posibles actualizaciones en la malla curricular, costos, reglamento de estudios y demás publicaciones en el portal de alumnos, puesto que se acogerá a los mismos.
+        </p>
+    </div>
+
+    <!-- PÉRDIDA DE VACANTE -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-5">
+            <i data-lucide="x-circle" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Pérdida de vacante</h3>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed">
+            De acuerdo con el artículo 18° del Reglamento de Admisión del Pregrado, los postulantes que alcancen vacante y no efectúen el trámite de matrícula o reserva de admisión dentro de los plazos fijados perderán de forma definitiva la vacante obtenida en la Universidad ESAN. Las vacantes no utilizadas podrán ser cubiertas por otros postulantes de acuerdo con el orden de mérito en las respectivas carreras.
+        </p>
+
+    </div>
+
+</div>
+`
+},
+
+// VIII. EXAMEN DE INGLÉS
+VIII: {
+title: "VIII. Examen de Inglés",
+icon: "languages",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="languages" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección VIII
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Examen de Clasificación de Inglés
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INTRODUCCIÓN -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+
+            <p>
+                Los ingresantes recibirán una comunicación al correo registrado al momento de su inscripción sobre la fecha de evaluación del examen de clasificación de inglés.
+            </p>
+
+            <p>
+                El idioma inglés juega un rol importante en la formación de los futuros profesionales; por ello, el estudiante debe acreditar el nivel de suficiencia según la normativa vigente de "Modalidad de Acreditación del Conocimiento del Idioma Inglés" aprobada por el Vicerrectorado Académico de ESAN.
+            </p>
+
+            <p>
+                De acuerdo con los planes de estudio de todas las carreras de DPA, <strong>antes de iniciar el sexto ciclo de estudios</strong>, el alumno deberá aprobar el nivel básico del idioma inglés (equivalente al nivel de suficiencia <strong>A2</strong> según el Marco Común Europeo de Referencia para las Lenguas).
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- OBJETIVO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-5">
+            <i data-lucide="target" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Objetivo del examen</h3>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed">
+            Medir el conocimiento de la lengua inglesa en un contexto específico. El examen es una fotografía lingüística de lo que el estudiante puede producir con sus conocimientos del idioma. Los resultados se miden en niveles de suficiencia, tomando como referencia el Marco Común Europeo de Referencia para las Lenguas:
+        </p>
+
+        <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                <p class="text-2xl font-bold text-[var(--esan-red)]">A1</p>
+                <p class="text-xs text-gray-700 mt-1">Principiante, usuario básico</p>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                <p class="text-2xl font-bold text-[var(--esan-red)]">A2</p>
+                <p class="text-xs text-gray-700 mt-1">Elemental, usuario básico</p>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                <p class="text-2xl font-bold text-[var(--esan-red)]">B1</p>
+                <p class="text-xs text-gray-700 mt-1">Intermedio, usuario independiente</p>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                <p class="text-2xl font-bold text-[var(--esan-red)]">B2</p>
+                <p class="text-xs text-gray-700 mt-1">Intermedio superior, usuario independiente</p>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                <p class="text-2xl font-bold text-[var(--esan-red)]">C1</p>
+                <p class="text-xs text-gray-700 mt-1">Avanzado, usuario competente</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODALIDAD Y DESCRIPCIÓN -->
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="monitor" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Modalidad</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+                El examen se realiza de manera presencial en los laboratorios de la universidad, utilizando la plataforma del aula virtual:
+            </p>
+            <a href="https://pa.uesan.edu.pe/" target="_blank" class="inline-flex items-center gap-2 mt-4 font-semibold text-[var(--esan-red)] hover:underline">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+                pa.uesan.edu.pe
+            </a>
+            <p class="text-sm text-gray-600 mt-4">Los estudiantes usan las credenciales recibidas por TI (usuario y contraseña) para ingresar al portal académico y al aula virtual.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="file-text" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Descripción del examen</h3>
+            </div>
+            <p class="text-gray-700 leading-relaxed">
+                Evalúa los componentes de comprensión oral, comprensión lectora, producción escrita y gramática.
+            </p>
+            <div class="mt-4 bg-red-50 border border-red-200 rounded-xl p-4">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    Si se detecta plagio (de internet o de terceros) o suplantación, la incidencia se informará a las oficinas de Admisión y de Registros Académicos, procediéndose acorde al Reglamento de Conducta aplicable.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RESULTADOS -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-5">
+            <i data-lucide="clipboard-check" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Resultados del examen</h3>
+        </div>
+
+        <div class="space-y-4 text-gray-700 leading-relaxed">
+            <p>Los resultados serán comunicados oportunamente por correo electrónico a los estudiantes. El resultado es exclusivamente para fines académicos internos de la Universidad ESAN; no se emiten constancias sobre estos resultados.</p>
+            <p>El alumno que no se presenta a la convocatoria del examen clasificatorio no podrá acreditar su nivel hasta seguir los pasos descritos a continuación.</p>
+        </div>
+
+    </div>
+
+    <!-- OTRAS FORMAS DE ACREDITACIÓN -->
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+            <i data-lucide="badge-check" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Otras formas de acreditación</h3>
+        </div>
+
+        <p class="text-gray-700 mb-6">
+            De acuerdo con los resultados del examen de clasificación, los alumnos que no lograron cumplir con la acreditación del idioma inglés podrán optar por:
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold mb-4">A</div>
+                <p class="text-gray-700 leading-relaxed">
+                    Completar el plan de estudio del idioma inglés que ofrece el Centro de Idiomas de ESAN, para lograr la acreditación y estar habilitado para la matrícula de los cursos del sexto ciclo.
+                </p>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold mb-4">B</div>
+                <p class="text-gray-700 leading-relaxed">
+                    Solicitar rendir un nuevo examen de suficiencia que ofrece la Universidad (ver requisitos y costo en el portal académico).
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+`
+},
+
+// IX. REGLAMENTOS Y DISPOSICIONES
+IX: {
+title: "IX. Reglamentos",
+icon: "scale",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="scale" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Sección IX
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Reglamentos y disposiciones normativas de ESAN
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+
+        <p class="text-gray-700 leading-relaxed">
+            En adición a las disposiciones señaladas en el presente documento, se informa que todo alumno que se haya matriculado en el DPA está sujeto al <strong>Reglamento de Estudios DPA</strong> de la Universidad ESAN y demás disposiciones normativas que les serán entregadas oportunamente.
+        </p>
+
+    </div>
+
+    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] p-6">
+        <div class="flex items-start gap-4">
+            <i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-1 flex-shrink-0"></i>
+            <p class="text-gray-700 leading-relaxed">
+                En caso de discrepancia entre lo establecido en la presente Guía y los Reglamentos Académicos vigentes de la Universidad ESAN, <strong>prevalecerán estos últimos</strong>.
+            </p>
+        </div>
+    </div>
+
+</div>
+`
+},
+
+// X. CALENDARIO ACADÉMICO
+X: {
+    title: "X. Calendario Académico 2026-1",
+    icon: "calendar",
+    html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <h2 class="text-3xl text-gray-900 font-serif">
+        X. Calendario académico 2026-1
+    </h2>
+
+    <!-- MÓDULO 1 -->
+
+    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] px-6 py-4">
+        <h3 class="text-xl font-serif text-gray-900">Módulo 1</h3>
+    </div>
+
+    <div class="relative border-l-2 border-gray-300 ml-6 space-y-6">
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-red-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">Del 5 al 12 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Pago de primera boleta</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-semibold">Del 5 al 20 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Inscripción al descuento por pronto pago</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">18 y 19 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Procedimiento de matrícula</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">20 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Matrícula extemporánea</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-pink-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">20 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Fecha límite: solicitud de convalidaciones (ingresantes 2026-1)</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-pink-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-semibold">27 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Matrícula extemporánea para alumnos nuevos</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">21 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Charla de inducción (alumnos nuevos)</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-red-200 bg-red-50">
+                <span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">28 de marzo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Inicio de clases — Módulo 1</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">Del 2 al 5 de abril</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Feriados (Semana Santa) <sup>(1)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">1 de mayo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Feriado <sup>(2)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-sky-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-semibold">15 de mayo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Fecha límite: solicitud de retiro de curso y/o Módulo 1</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-red-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">24 de mayo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Último día de clases del Módulo 1</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-sky-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-semibold">25 de mayo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Fecha límite: solicitud de evaluación de rezagados</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-semibold">26 de mayo (7:00 p.m.)</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Evaluación de rezagados <sup>(3)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">30 de mayo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Devolución de evaluaciones finales y presentación de reclamo <sup>(4)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">2 de junio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Publicación de reclamo de evaluación final y de notas en la plataforma virtual</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MÓDULO 2 -->
+
+    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] px-6 py-4">
+        <h3 class="text-xl font-serif text-gray-900">Módulo 2</h3>
+    </div>
+
+    <div class="relative border-l-2 border-gray-300 ml-6 space-y-6">
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-red-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-red-200 bg-red-50">
+                <span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">30 de mayo</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Inicio de clases — Módulo 2</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">7 de junio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Libres <sup>(5)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">29 de junio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Feriado <sup>(6)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-sky-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-semibold">10 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Fecha límite: solicitud de retiro de curso y/o Módulo 2</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-sky-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-semibold">10 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Fecha límite: solicitud de retiro de ciclo</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-red-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">19 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Último día de clases del Módulo 2</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-sky-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-semibold">20 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Fecha límite: solicitud de evaluación de rezagados</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm font-semibold">21 de julio (7:00 p.m.)</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Evaluación de rezagados <sup>(7)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">22 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Devolución de evaluaciones finales y presentación de reclamo <sup>(8)</sup></h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold">23 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Feriado</h3>
+            </div>
+        </div>
+
+        <div class="relative pl-10">
+            <div class="absolute -left-[9px] top-3 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow"></div>
+            <div class="glass rounded-xl p-5 border border-gray-200 hover:shadow-lg transition">
+                <span class="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">25 de julio</span>
+                <h3 class="mt-3 text-xl font-serif text-gray-900">Publicación de reclamo de evaluación final y de notas en la plataforma virtual</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NOTAS -->
+
+    <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+        <h3 class="text-xl font-serif text-gray-900 mb-4">Notas importantes</h3>
+        <div class="space-y-4 text-gray-700">
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(1)</strong> Las clases del 2 al 5 de abril no se recuperan porque el calendario académico está ajustado a las semanas de clase.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(2)</strong> Las clases del feriado deberán recuperarse en otra fecha.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(3)</strong> Sólo para alumnos que reciban la confirmación de autorización para rendir la evaluación de rezagados.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(4)</strong> Las solicitudes de reclamo se presentan de acuerdo con el procedimiento establecido por la Oficina de Atención Alumno DPA. No se aceptan solicitudes fuera de la fecha.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(5)</strong> Las clases del feriado deberán recuperarse en otra fecha.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(6)</strong> Las clases del feriado deberán recuperarse en otra fecha.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(7)</strong> Sólo para alumnos que reciban la confirmación de autorización para rendir la evaluación de rezagados.</span></p>
+            <p class="flex gap-3"><i data-lucide="info" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span><strong>(8)</strong> Las solicitudes de reclamo se presentan de acuerdo con el procedimiento establecido por la Oficina de Atención Alumno DPA. No se aceptan solicitudes fuera de la fecha.</span></p>
+            <p class="flex gap-3"><i data-lucide="alert-triangle" class="w-5 h-5 text-[var(--esan-red)] mt-0.5"></i><span>La Universidad podrá realizar ajustes razonables en el calendario académico, modalidad de enseñanza o procedimientos administrativos por razones de caso fortuito, fuerza mayor o disposiciones de autoridad competente.</span></p>
+        </div>
+    </div>
+
+</div>`
+},
+
+// XI. ANEXO 1
+XI: {
+title: "XI. Anexo 1",
+icon: "clipboard-list",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <!-- ENCABEZADO -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-4">
+
+            <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
+                <i data-lucide="clipboard-list" class="w-7 h-7 text-white"></i>
+            </div>
+
+            <div>
+
+                <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
+                    Anexo 1
+                </p>
+
+                <h2 class="text-3xl font-serif text-gray-900">
+                    Conceptos no sujetos a devolución
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="glass rounded-2xl overflow-hidden border-l-4 border-[var(--esan-red)]">
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
+                        <th class="px-6 py-4 text-left">Concepto</th>
+                        <th class="px-6 py-4 text-right">Monto</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Derechos de postulación</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 350.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Derecho de matrícula</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 300.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Reserva de admisión</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 300.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Reserva de matrícula</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 300.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Solicitud de convalidación</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 100.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Convalidaciones por curso</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 250.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Gastos administrativos por trámites de devolución</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 38.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">
+                            Emisión de cheque de gerencia
+                            <p class="text-xs text-gray-500 font-normal mt-1">Se cobra adicionalmente a los gastos administrativos por devolución, en caso no se haya informado una cuenta bancaria.</p>
+                        </td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">S/ 14.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">Descuentos otorgados por la Universidad</td>
+                        <td class="px-6 py-4 text-right font-bold text-gray-600">Según lineamientos vigentes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] p-6">
+        <p class="text-gray-700 leading-relaxed">
+            Estos conceptos no son materia de devolución, salvo en los supuestos previstos por la normativa vigente o por causas no imputables al estudiante.
+        </p>
+    </div>
+
+</div>
+`
+},
+
+// XII. CONTACTO
+XII: {
+title: "XII. Contacto",
+icon: "phone",
+html: `
+
+<div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
+
+    <h2 class="text-3xl text-gray-900 font-serif">
+        XII. Información de contacto
+    </h2>
+
+    <div class="glass p-8 rounded-xl border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-start gap-4">
+
+            <div class="w-14 h-14 rounded-full bg-[var(--esan-red)]/10 flex items-center justify-center shrink-0">
+                <i data-lucide="headset" class="w-7 h-7 text-[var(--esan-red)]"></i>
+            </div>
+
+            <div>
+
+                <h3 class="text-2xl font-serif text-gray-900 mb-3">Coordinación DPA</h3>
+
+                <p class="text-gray-700 mb-4">Para consultas comunicarse a:</p>
+
+                <a href="mailto:atencionalumnodpa@esan.edu.pe"
+                   class="inline-flex items-center gap-2 font-semibold text-[var(--esan-red)] hover:underline text-lg">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    atencionalumnodpa@esan.edu.pe
+                </a>
+
+                <div class="mt-6 grid sm:grid-cols-3 gap-4">
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                        <p class="text-sm font-semibold text-gray-900">Lunes a viernes</p>
+                        <p class="text-sm text-gray-700">9:00 a.m. – 6:00 p.m.</p>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                        <p class="text-sm font-semibold text-gray-900">Sábados</p>
+                        <p class="text-sm text-gray-700">3:00 p.m. – 6:30 p.m.</p>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+                        <p class="text-sm font-semibold text-gray-900">Domingos</p>
+                        <p class="text-sm text-gray-700">8:30 a.m. – 12:00 p.m.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-[var(--esan-blue-light)] border-l-4 border-[var(--esan-red)] rounded-xl p-5 flex items-center gap-3">
+        <i data-lucide="mail" class="w-6 h-6 text-[var(--esan-red)]"></i>
+        <p class="text-gray-800">
+            <strong>Reserva de admisión:</strong>
+            <a href="mailto:admisionpregrado@esan.edu.pe" class="text-[var(--esan-red)] hover:underline font-semibold">admisionpregrado@esan.edu.pe</a>
+        </p>
+    </div>
+
+</div>`
+},
+
+};
+
+
+// NAVEGACIÓN LATERAL
+function renderMenu() {
+    const container = document.getElementById('menu-container');
+    const keys = Object.keys(db).filter(k => k !== 'welcome');
+    container.innerHTML = keys.map(key => `
+        <button onclick="renderContent('${key}')" id="btn-${key}" class="menu-btn w-full text-left px-6 py-3 text-[13px] font-semibold tracking-wide transition flex items-center gap-3">
+            <i data-lucide="${db[key].icon}" class="w-4 h-4"></i> ${db[key].title}
+        </button>
+    `).join('');
+    lucide.createIcons();
+}
+
+// MOSTRAR CONTENIDO
+function renderContent(key) {
+    const viewer = document.getElementById('viewer');
+    viewer.innerHTML = db[key].html;
+
+    document.querySelectorAll('#menu-container button').forEach(b => b.classList.remove('active-tab'));
+    const btn = document.getElementById(`btn-${key}`);
+    if (btn) btn.classList.add('active-tab');
+
+    lucide.createIcons();
+    // CERRAR MENÚ EN CELULAR
+if (window.innerWidth < 768) {
+document.getElementById('sidebar')
+    .classList.add('-translate-x-full');
+}
+    viewer.scrollTop = 0;
+}
+//ABRIR / CERRAR MENÚ
+function toggleMenu() {
+const sidebar = document.getElementById('sidebar');
+sidebar.classList.toggle('-translate-x-full');
+}
+
+
+// BUSCADOR RÁPIDO
+
+document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('search').addEventListener('input', (e) => {
+const val = e.target.value.toLowerCase().trim();
+if (!val) return;
+
+const searchMap = [
+  { target: 'I', keywords: ['generalidades', 'objetivo', 'alcance', 'definicion', 'ingresante', 'admitido'] },
+  { target: 'II', keywords: ['matr', 'boleta', 'crédit', 'credit', 'primera boleta'] },
+  { target: 'III', keywords: ['medios de pago', 'bcp', 'bbva', 'banco', 'derechos de enseñanza'] },
+  { target: 'IV', keywords: ['credencial', 'contraseña', 'usuario', 'código de alumno'] },
+  { target: 'V', keywords: ['convalid', 'silabo', 'sílabo'] },
+  { target: 'VI', keywords: ['pronto pago', 'descuento', '10%'] },
+  { target: 'VII', keywords: ['reserva', 'vacante', 'pérdida de vacante'] },
+  { target: 'VIII', keywords: ['inglés', 'ingles', 'idioma', 'examen de clasificación'] },
+  { target: 'IX', keywords: ['reglamento', 'disposiciones', 'normativa'] },
+  { target: 'X', keywords: ['calendario', 'fechas', 'cronograma', 'módulo', 'modulo'] },
+  { target: 'XI', keywords: ['anexo', 'devolución', 'devolucion', 'no sujetos'] },
+  { target: 'XII', keywords: ['contacto', 'teléfono', 'telefono', 'correo', 'coordinación dpa'] }
+];
+
+for (const item of searchMap) {
+  if (item.keywords.some(k => val.includes(k))) {
+    renderContent(item.target);
+    break;
+  }
+}
+});
+});
+
+window.onload = function () {
+const dniGuardado = sessionStorage.getItem("dni");
+
+if (dniGuardado) {
+    entrarDirecto();
+}
+};
+
+function ingresar() {
+const dni = document.getElementById("dni").value.trim();
+const check = document.getElementById("check").checked;
+const error = document.getElementById("error");
+
+if (!/^\d{8}$/.test(dni)) {
+    error.innerText = "Ingresa un DNI válido (8 dígitos)";
+    error.classList.remove("hidden");
+    return;
+}
+
+if (!check) {
+    error.innerText = "Debes aceptar el compromiso";
+    error.classList.remove("hidden");
+    return;
+}
+
+sessionStorage.setItem("dni", dni);
+
+entrarDirecto();
+}
+
+function entrarDirecto() {
+document.getElementById("overlay").style.display = "none";
+document.getElementById("app").classList.remove("opacity-0");
+}
+
+
+// INICIO
+renderMenu();
+renderContent('welcome');
+
+</script>
+</body>
+</html>
