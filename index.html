@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Procedimientos Administrativos DPA 2026-1</title>
+    <title>Guía de Procedimientos Administrativos DPA 2026-2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -109,6 +109,10 @@ textarea{
     }
 
 }
+
+h1, h2, h3, h4, .font-serif {
+    font-family: 'Montserrat', sans-serif !important;
+}
     </style>
 </head>
 <body class="min-h-screen flex flex-col md:flex-row bg-white overflow-x-hidden" id="app">
@@ -121,11 +125,11 @@ textarea{
         <!-- TÍTULO -->
         <div>
             <h2 class="text-3xl text-gray-900 font-serif">
-                Guía DPA 2026-1
+                <strong>Guía DPA 2026-2</strong>
             </h2>
 
             <p class="text-sm text-gray-500 mt-2">
-                Bienvenido(a) a la Universidad ESAN
+                <strong>Bienvenido(a) a la Universidad ESAN</strong>
             </p>
         </div>
 
@@ -151,7 +155,7 @@ textarea{
             type="text"
             id="dni"
             maxlength="8"
-            placeholder="Ingresa tu DNI"
+            placeholder="Ingrese su número de DNI"
             class="w-full p-3 rounded-xl bg-white text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500"
         >
 
@@ -160,7 +164,7 @@ textarea{
             <input type="checkbox" id="check" class="mt-1 accent-red-600">
 
             <span>
-                Me comprometo a revisar y seguir la información contenida en la Guía de Procedimientos Administrativos DPA 2026-1.
+                Me comprometo a revisar y seguir la información contenida en la Guía de Procedimientos Administrativos DPA 2026-2.
             </span>
         </label>
 
@@ -179,10 +183,10 @@ textarea{
     <!-- ASIDE -->
     <aside id="sidebar" class="fixed md:relative inset-y-0 left-0 z-50 w-72 sidebar-red flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 shadow-2xl md:shadow-none">
         <div class="p-6 border-b border-white/20 flex items-center gap-3 cursor-pointer" onclick="renderContent('welcome')">
-    		<div class="w-10 h-10 bg-white rounded flex items-center justify-center text-2xl font-bold text-[var(--esan-red)]">UE</div>
+    		<div class="w-10 h-10 bg-white rounded flex items-center justify-center text-2xl font-bold text-[var(--esan-red)]">DPA</div>
     		<div>
        		 <h1 class="text-white text-lg leading-none">ESAN UNIVERSITY</h1>
-        	<p class="text-[10px] text-white/80 uppercase tracking-widest">DPA · Guía 2026-1</p>
+        	<p class="text-[10px] text-white/80 uppercase tracking-widest">DPA · Guía 2026-2</p>
     		</div>
 		</div>
         <div class="flex-1 overflow-y-auto py-2" id="menu-container"></div>
@@ -232,7 +236,7 @@ html:`
         <img
     src="https://www.esan.edu.pe/images/blog/2018/04/10/esan-fachada-licenciamiento-facebook.jpg"
     class="w-full h-full object-cover transition duration-700 hover:scale-105"
-    style="object-position: center 60%;"
+    style="object-position: center 75%;"
     alt="ESAN">
 	<div class="absolute inset-0 bg-gradient-to-b from-[#AE0800]/75 via-[#E3173E]/15 to-transparent"></div>
 
@@ -240,7 +244,7 @@ html:`
    		 <div class="p-8">
 
         	<h2 class="text-4xl md:text-5xl font-serif text-white drop-shadow">
-           		 Bienvenidos al DPA
+           		 <strong>Bienvenidos a la excelencia</strong>
         	</h2>
 
     		</div>
@@ -252,11 +256,11 @@ html:`
     <div class="text-center max-w-3xl mx-auto mb-10">
 
         <h1 class="text-3xl md:text-4xl text-gray-900 font-serif mb-4">
-            Guía de Procedimientos Administrativos DPA 2026-1
+            Guía de Procedimientos Administrativos DPA 2026-2
         </h1>
 
         <p class="text-gray-600 leading-relaxed">
-            En este catálogo interactivo encontrarás los procedimientos administrativos a seguir luego de haber sido aceptado(a) en el DPA de la Universidad ESAN: matrícula, pagos, convalidaciones, beneficios, examen de inglés y calendario académico.
+            En este catálogo interactivo encontrarás la información sobre los procedimientos administrativos que debes seguir luego de haber sido aceptado(a) en el DPA de la Universidad ESAN, así como las respuestas a las consultas más frecuentes durante este proceso.
         </p>
 
     </div>
@@ -1933,6 +1937,11 @@ function renderContent(key) {
     const viewer = document.getElementById('viewer');
     viewer.innerHTML = db[key].html;
 
+	// Cambiar URL según sección
+    if (rutas[key]) {
+        history.replaceState(null, "", "#" + rutas[key]);
+    }
+
     document.querySelectorAll('#menu-container button').forEach(b => b.classList.remove('active-tab'));
     const btn = document.getElementById(`btn-${key}`);
     if (btn) btn.classList.add('active-tab');
@@ -1992,36 +2001,76 @@ if (dniGuardado) {
 };
 
 function ingresar() {
-const dni = document.getElementById("dni").value.trim();
-const check = document.getElementById("check").checked;
-const error = document.getElementById("error");
+    const dni = document.getElementById("dni").value.trim();
+    const check = document.getElementById("check").checked;
+    const error = document.getElementById("error");
 
-if (!/^\d{8}$/.test(dni)) {
-    error.innerText = "Ingresa un DNI válido (8 dígitos)";
-    error.classList.remove("hidden");
-    return;
-}
+    if (!/^\d{8}$/.test(dni)) {
+        error.innerText = "Ingrese un DNI válido (8 dígitos)";
+        error.classList.remove("hidden");
+        return;
+    }
 
-if (!check) {
-    error.innerText = "Debes aceptar el compromiso";
-    error.classList.remove("hidden");
-    return;
-}
+    if (!check) {
+        error.innerText = "Debe aceptar el compromiso de revisión";
+        error.classList.remove("hidden");
+        return;
+    }
 
-sessionStorage.setItem("dni", dni);
-
-entrarDirecto();
-}
+    entrarDirecto();
+} 
 
 function entrarDirecto() {
-document.getElementById("overlay").style.display = "none";
-document.getElementById("app").classList.remove("opacity-0");
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("app").classList.remove("opacity-0");
 }
 
 
-// INICIO
+// RUTAS AMIGABLES PARA ENLACES
+const rutas = {
+
+    welcome: "inicio",
+
+    I: "generalidades",
+    II: "matricula-cuotas",
+    III: "medios-de-pago",
+    IV: "credenciales",
+    V: "descuento-pronto-pago",
+    VI: "reserva-vacante",
+    VII: "examen-ingles",
+    VIII: "reglamentos",
+    IX: "calendario-academico",
+    X: "idioma-ingles",
+    XI: "anexo-1",
+    XII: "contacto"
+};
+
+
+// Crear relación inversa
+const rutasInversas = {};
+
+Object.keys(rutas).forEach(key => {
+    rutasInversas[rutas[key]] = key;
+});
+
+        // INICIO
 renderMenu();
-renderContent('welcome');
+
+
+const hash = window.location.hash.replace("#","");
+
+
+const seccion = rutasInversas[hash];
+
+
+if (seccion && db[seccion]) {
+
+    renderContent(seccion);
+
+} else {
+
+    renderContent('welcome');
+}
 
 </script>
 </body>
