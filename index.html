@@ -1921,46 +1921,45 @@ html: `
 
 
 // NAVEGACIÓN LATERAL
-function renderMenu() {
-    const container = document.getElementById('menu-container');
-    const keys = Object.keys(db).filter(k => k !== 'welcome');
-    container.innerHTML = keys.map(key => `
-        <button onclick="renderContent('${key}')" id="btn-${key}" class="menu-btn w-full text-left px-6 py-3 text-[13px] font-semibold tracking-wide transition flex items-center gap-3">
-            <i data-lucide="${db[key].icon}" class="w-4 h-4"></i> ${db[key].title}
-        </button>
-    `).join('');
-    lucide.createIcons();
-}
+        function renderMenu() {
+            const container = document.getElementById('menu-container');
+            const keys = Object.keys(db).filter(k => k !== 'welcome');
+            container.innerHTML = keys.map(key => `
+                <button onclick="renderContent('${key}')" id="btn-${key}" class="menu-btn w-full text-left px-6 py-3 text-[13px] font-semibold tracking-wide transition flex items-center gap-3">
+                    <i data-lucide="${db[key].icon}" class="w-4 h-4"></i> ${db[key].title}
+                </button>
+            `).join('');
+            lucide.createIcons();
+        }
 
-// MOSTRAR CONTENIDO
-function renderContent(key) {
-    const viewer = document.getElementById('viewer');
-    viewer.innerHTML = db[key].html;
+        // MOSTRAR CONTENIDO
+        function renderContent(key) {
+            const viewer = document.getElementById('viewer');
+            viewer.innerHTML = db[key].html;
 
-	// Cambiar URL según sección
+			 // Cambiar URL según sección
     if (rutas[key]) {
         history.replaceState(null, "", "#" + rutas[key]);
     }
 
-    document.querySelectorAll('#menu-container button').forEach(b => b.classList.remove('active-tab'));
-    const btn = document.getElementById(`btn-${key}`);
-    if (btn) btn.classList.add('active-tab');
+            document.querySelectorAll('#menu-container button').forEach(b => b.classList.remove('active-tab'));
+            const btn = document.getElementById(`btn-${key}`);
+            if (btn) btn.classList.add('active-tab');
 
-    lucide.createIcons();
-    // CERRAR MENÚ EN CELULAR
+            lucide.createIcons();
+            // CERRAR MENÚ EN CELULAR
 if (window.innerWidth < 768) {
-document.getElementById('sidebar')
-    .classList.add('-translate-x-full');
+    document.getElementById('sidebar')
+        .classList.add('-translate-x-full');
 }
-    viewer.scrollTop = 0;
-}
+            viewer.scrollTop = 0;
+        }
 //ABRIR / CERRAR MENÚ
 function toggleMenu() {
-const sidebar = document.getElementById('sidebar');
-sidebar.classList.toggle('-translate-x-full');
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('-translate-x-full');
 }
-
-
+	
 // BUSCADOR RÁPIDO
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1992,14 +1991,6 @@ for (const item of searchMap) {
 });
 });
 
-window.onload = function () {
-const dniGuardado = sessionStorage.getItem("dni");
-
-if (dniGuardado) {
-    entrarDirecto();
-}
-};
-
 function ingresar() {
     const dni = document.getElementById("dni").value.trim();
     const check = document.getElementById("check").checked;
@@ -2024,7 +2015,6 @@ function entrarDirecto() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("app").classList.remove("opacity-0");
 }
-
 
 // RUTAS AMIGABLES PARA ENLACES
 const rutas = {
