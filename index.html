@@ -6,7 +6,7 @@
     <title>Guía de Procedimientos Administrativos DPA 2026-2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">    
     <style>
         :root{
             --esan-red: #E3173E;
@@ -185,13 +185,13 @@ h1, h2, h3, h4, .font-serif {
         <div class="p-6 border-b border-white/20 flex items-center gap-3 cursor-pointer" onclick="renderContent('welcome')">
     		<div class="w-16 h-16 bg-white rounded flex items-center justify-center text-2xl font-bold text-[var(--esan-red)]">DPA</div>
     		<div>
-       		 <h1 class="text-white text-lg leading-none">ESAN UNIVERSITY</h1>
-        	<p class="text-[10px] text-white/80 uppercase tracking-widest"> DPA · Guía 2026-2 </p>
+       		 <h1 class="text-white text-lg leading-none"><strong>ESAN UNIVERSITY</strong></h1>
+        	<p class="text-[10px] text-white/80 uppercase tracking-widest"> Ingresantes DPA 2026-2 </p>
     		</div>
 		</div>
         <div class="flex-1 overflow-y-auto py-2" id="menu-container"></div>
         <div class="p-4 text-center text-xs text-white/70 border-t border-white/20">
-   			 Documento Oficial · DPA
+   			 Documento Oficial · 13 Páginas
 		</div>
     </aside>
 
@@ -209,7 +209,7 @@ h1, h2, h3, h4, .font-serif {
     <input
         type="text"
         id="search"
-        placeholder="Buscar (ej: convalidación, pronto pago, inglés)..."
+        placeholder="Buscar (ej: convalidación, pagos, inglés)..."
         class="bg-transparent w-full text-gray-900 focus:outline-none placeholder-gray-400"
  	   >
 	</div>
@@ -256,7 +256,7 @@ html:`
     <div class="text-center max-w-3xl mx-auto mb-10">
 
         <h1 class="text-3xl md:text-4xl text-gray-900 font-serif mb-4">
-            Guía de Procedimientos Administrativos DPA 2026-2
+            <strong>Guía de Procedimientos Administrativos DPA 2026-2</strong>
         </h1>
 
         <p class="text-gray-600 leading-relaxed">
@@ -279,8 +279,8 @@ html:`
         </button>
 
 		<button onclick="renderContent('III')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
-            <h3 class="font-bold text-gray-900 group-hover:text-white transition">💰 III. Cuotas por Derechos Académicos</h3>
-            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Primera boleta, valor del crédito y cálculo de cuotas.</p>
+            <h3 class="font-bold text-gray-900 group-hover:text-white transition">💰 III. Cobros Académicos</h3>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Boletas, valor del crédito y cuotas.</p>
         </button>
 
         <button onclick="renderContent('IV')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
@@ -310,7 +310,7 @@ html:`
 
         <button onclick="renderContent('IX')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
             <h3 class="font-bold text-gray-900 group-hover:text-white transition">⚖️ IX. Reglamentos</h3>
-            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Disposiciones normativas de ESAN.</p>
+            <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Disposiciones normativas de la Universidad ESAN.</p>
         </button>
 
         <button onclick="renderContent('X')" class="glass rounded-2xl p-5 transition hover:bg-[var(--esan-red)] hover:shadow-md hover:border-[var(--esan-red-dark)] border-l-4 border-[var(--esan-red)] group">
@@ -327,6 +327,24 @@ html:`
             <h3 class="font-bold text-gray-900 group-hover:text-white transition">📅 XII. Anexo 2</h3>
             <p class="text-sm text-gray-500 mt-1 group-hover:text-white/90 transition">Calendario Académico de los módulos 1 y 2 del ciclo 2026-2.</p>
         </button>
+
+    </div>
+
+	 <!-- PDF -->
+
+    <div class="flex justify-center mt-10">
+
+        <a
+            href="./Guia_DPA.pdf"
+            download
+            class="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-white font-semibold transition shadow-lg hover:shadow-xl hover:scale-105"
+            style="background:var(--esan-red);">
+
+            <i data-lucide="download" class="w-5 h-5"></i>
+
+            Descargar Guía para Ingresantes DPA 2026-2
+
+        </a>
 
     </div>
 
