@@ -651,8 +651,9 @@ html: `
 
             <div class="flex items-start gap-3">
 
-                <i data-lucide="calendar-days"
-                   class="w-5 h-5 text-[var(--esan-red)] mt-1"></i>
+                <i
+    				data-lucide="calendar-days"
+    				class="w-5 h-5 flex-shrink-0 text-[var(--esan-red)] mt-1"></i>
 
                 <p class="text-gray-700">
 
@@ -738,10 +739,10 @@ acuerdo con lo señalado en el numeral 1.2. <button
 `
 },
 
-// III. MEDIOS DE PAGO
+// III. COBROS ACADÉMICOS
 III: {
-title: "III. Medios de Pago",
-icon: "credit-card",
+title: "III. Cobros Académicos",
+icon: "dollar-sign",
 html: `
 
 <div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
@@ -759,11 +760,11 @@ html: `
             <div>
 
                 <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
-                    Sección III · 2.2 y 2.3
+                    Sección III · Numeral 3.1
                 </p>
 
                 <h2 class="text-3xl font-serif text-gray-900">
-                    Detalle de pagos y derechos de enseñanza
+                    <strong>Cuotas por Derechos Académicos</strong>
                 </h2>
 
             </div>
@@ -772,62 +773,201 @@ html: `
 
     </div>
 
-    <!-- BANCOS -->
+<!-- PRIMERA BOLETA -->
 
-    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+    <div class="grid md:grid-cols-2 gap-6">
 
-        <div class="flex items-center gap-3 mb-6">
-            <i data-lucide="landmark" class="w-6 h-6 text-[var(--esan-red)]"></i>
-            <h3 class="text-xl font-serif text-gray-900">Bancos habilitados (sin recargo)</h3>
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="receipt" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900"><strong>Primera boleta</strong></h3>
+            </div>
+
+            <p class="text-5xl font-bold text-[var(--esan-red)] mb-4">S/ 1,450.00</p>
+
+            <p class="text-gray-700 leading-relaxed">
+                Incluye el derecho de matrícula (<strong>S/ 300.00</strong>) y la primera cuota de derechos de enseñanza. Quienes resulten admitidos y hayan presentado los documentos solicitados por la Oficina de Admisión de Pregrado deberán efectuar este pago para poder matricularse.
+            </p>
+
+            <div class="mt-5 bg-gray-50 border border-gray-200 rounded-xl p-4">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    No estarán habilitados para pagar la primera boleta (incluye matrícula) quienes tengan documentación pendiente de entrega a la Oficina de Admisión.
+                </p>
+            </div>
+
         </div>
 
-        <p class="text-gray-700 leading-relaxed mb-6">
-            Los pagos de las boletas pueden realizarse en los siguientes bancos indicando la modalidad y el código de alumno que identificará el pago realizado:
-        </p>
+        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
 
-        <div class="grid md:grid-cols-2 gap-6">
-
-            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
-                <div class="flex items-center gap-3 mb-3">
-                    <i data-lucide="building-2" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                    <h4 class="text-lg font-serif text-gray-900">Banco de Crédito (BCP)</h4>
-                </div>
-                <p class="text-sm text-gray-700">
-                    Modalidad de pago: <strong>UNIVERSIDAD ESAN PREGRADO PENSION SOLES</strong>
-                </p>
+            <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="calculator" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Valor del crédito</h3>
             </div>
 
-            <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
-                <div class="flex items-center gap-3 mb-3">
-                    <i data-lucide="building-2" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                    <h4 class="text-lg font-serif text-gray-900">BBVA</h4>
-                </div>
-                <p class="text-sm text-gray-700">
-                    Modalidad de pago: <strong>ESAN PENSIONES SOLES</strong>
-                </p>
-            </div>
+            <p class="text-5xl font-bold text-[var(--esan-red)] mb-4">S/ 230.00</p>
+
+            <p class="text-gray-700 leading-relaxed">
+                El cálculo de las boletas de pago para los alumnos ingresantes se realiza en función al número de créditos matriculados, considerando este valor por crédito para las carreras del DPA.
+            </p>
 
         </div>
 
     </div>
 
-    <!-- DERECHOS DE ENSEÑANZA -->
+    <!-- EJEMPLO 20 CRÉDITOS - REGULAR -->
 
-    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+    <div class="glass rounded-2xl overflow-hidden border-l-4 border-[var(--esan-red)]">
 
-        <div class="flex items-center gap-3 mb-6">
-            <i data-lucide="wallet" class="w-6 h-6 text-[var(--esan-red)]"></i>
-            <h3 class="text-xl font-serif text-gray-900">Pago de derechos de enseñanza</h3>
+        <div class="px-7 py-6 border-b border-gray-200">
+            <div class="flex items-center gap-3">
+                <i data-lucide="table" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Ejemplo: alumno matriculado en 20 créditos</h3>
+            </div>
         </div>
 
-        <ul class="list-disc pl-6 space-y-4 text-gray-700 leading-relaxed">
-            <li>Los derechos de enseñanza del DPA se calculan en función al valor del crédito, cuyo monto asciende a <strong>S/ 230.00</strong>.</li>
-            <li>El cálculo se realiza en función al número de créditos matriculados en cada semestre.</li>
-            <li>El monto de los derechos académicos podrá ser actualizado en ciclos posteriores por motivo de inflación y/o aumento de precios de bienes y servicios necesarios para la continuidad del servicio educativo, observando los procedimientos y disposiciones legales vigentes. Cualquier modificación será comunicada antes del inicio del proceso de matrícula del ciclo correspondiente.</li>
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
+                        <th class="px-6 py-4 text-left">Boleta</th>
+                        <th class="px-6 py-4 text-right">Matrícula (S/)</th>
+                        <th class="px-6 py-4 text-right">Derechos de enseñanza (S/)</th>
+                        <th class="px-6 py-4 text-right">Total (S/)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">1ra. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-700">1,150.00</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">1,450.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">2da. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">3ra. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">4ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">5ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">862.50</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">862.50</td>
+                    </tr>
+                    <tr class="bg-gray-50 font-bold">
+                        <td class="px-6 py-4 text-gray-900">Total</td>
+                        <td class="px-6 py-4 text-right text-gray-900">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-900">4,600.00</td>
+                        <td class="px-6 py-4 text-right text-[var(--esan-red)]">4,900.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="px-7 py-4 text-sm text-gray-500 leading-relaxed border-t border-gray-200">
+            Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre. Estos montos no consideran descuentos comerciales.
+        </p>
+
+    </div>
+
+    <!-- EJEMPLO 20 CRÉDITOS - CONVENIO -->
+
+    <div class="glass rounded-2xl overflow-hidden border-l-4 border-[var(--esan-red)]">
+
+        <div class="px-7 py-6 border-b border-gray-200">
+            <div class="flex items-center gap-3">
+                <i data-lucide="handshake" class="w-6 h-6 text-[var(--esan-red)]"></i>
+                <h3 class="text-xl font-serif text-gray-900">Alumnos provenientes de instituciones con convenio</h3>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
+                        <th class="px-6 py-4 text-left">Boleta</th>
+                        <th class="px-6 py-4 text-right">Matrícula (S/)</th>
+                        <th class="px-6 py-4 text-right">Derechos de enseñanza (S/)</th>
+                        <th class="px-6 py-4 text-right">Total (S/)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">1ra. Boleta**</td>
+                        <td class="px-6 py-4 text-right text-gray-700">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-700">1,035.00</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">1,335.00</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">2da. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">3ra. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">4ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-6 py-4 font-semibold text-gray-800">5ta. Boleta</td>
+                        <td class="px-6 py-4 text-right text-gray-700">—</td>
+                        <td class="px-6 py-4 text-right text-gray-700">776.25</td>
+                        <td class="px-6 py-4 text-right font-bold text-[var(--esan-red)]">776.25</td>
+                    </tr>
+                    <tr class="bg-gray-50 font-bold">
+                        <td class="px-6 py-4 text-gray-900">Total</td>
+                        <td class="px-6 py-4 text-right text-gray-900">300.00</td>
+                        <td class="px-6 py-4 text-right text-gray-900">4,140.00</td>
+                        <td class="px-6 py-4 text-right text-[var(--esan-red)]">4,440.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="px-7 py-4 text-sm text-gray-500 leading-relaxed border-t border-gray-200">
+            Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre.
+        </p>
+
+    </div>
+
+    <!-- INFORMACIÓN IMPORTANTE -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-5">
+            <i data-lucide="info" class="w-6 h-6 text-[var(--esan-red)]"></i>
+            <h3 class="text-xl font-serif text-gray-900">Información importante</h3>
+        </div>
+
+        <ul class="list-disc pl-6 space-y-3 text-gray-700 leading-relaxed">
+            <li>Cualquier modificación a los montos de pensiones será comunicada oportunamente.</li>
+            <li>El pago por derechos académicos podrá realizarse en los bancos detallados en la sección III, indicando en ventanilla la modalidad de pago y el código de alumno, o a través de la banca por internet.</li>
+            <li>Para revisar pagos pendientes, boletas vencidas y otros detalles, el alumno puede ingresar a <strong>Estado de Cuenta y Pagos Visa</strong> en el Menú Principal de la plataforma virtual (ruta: Mi Portal / Académico / Pagos / Pagos Visa) o mediante <a href="https://pagos.esan.edu.pe/alumno/inicio/logon" target="_blank" class="text-[var(--esan-red)] font-semibold hover:underline">pagos.esan.edu.pe</a>. También permite pagos en línea con tarjetas de crédito, ingresando el código de alumno y el DNI.</li>
+            <li>En caso de incumplimiento en el pago de boletas vencidas, la Universidad ESAN queda facultada a trasladar la documentación a su área legal para las acciones de recuperación de deuda, tercerizar la cobranza o transferir los derechos de cobro a terceros, respetando la normativa de protección de datos. Asimismo, podrá reportar a las Centrales de Riesgo, conforme a la normativa vigente.</li>
         </ul>
 
     </div>
-
 </div>
 `
 },
