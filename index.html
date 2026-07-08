@@ -1429,85 +1429,249 @@ html: `
 
     </div>
 
-    <!-- COSTOS -->
+    <!-- COSTO -->
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
 
-        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
-            <div class="flex items-center gap-3 mb-4">
-                <i data-lucide="receipt" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                <h3 class="text-xl font-serif text-gray-900">Solicitud de convalidación</h3>
-            </div>
-            <p class="text-4xl font-bold text-[var(--esan-red)] mb-3">S/ 100.00</p>
-            <p class="text-sm text-gray-700 leading-relaxed">No sujeto a devolución. Las cuentas de pago se remiten por correo.</p>
+        <div class="flex items-center gap-3 mb-4">
+
+            <i data-lucide="receipt"
+               class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">
+
+                <strong>Costo del trámite</strong>
+
+            </h3>
+
         </div>
 
-        <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
-            <div class="flex items-center gap-3 mb-4">
-                <i data-lucide="book-copy" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                <h3 class="text-xl font-serif text-gray-900">Derechos académicos por curso convalidado</h3>
-            </div>
-            <p class="text-4xl font-bold text-[var(--esan-red)] mb-3">S/ 250.00</p>
-            <p class="text-sm text-gray-700 leading-relaxed">Costo por cada curso convalidado, adicional a la solicitud.</p>
-        </div>
+        <p class="text-4xl font-bold text-[var(--esan-red)] mb-3">
+            S/ 250.00
+        </p>
+
+        <p class="text-gray-700 leading-relaxed">
+
+            La solicitud de convalidación tiene un costo único de
+            <strong>S/ 250.00</strong>, el cual
+            <strong>no está sujeto a devolución</strong>.
+            Las cuentas para realizar el pago serán remitidas por correo electrónico.
+
+        </p>
 
     </div>
 
-    <div class="rounded-2xl bg-red-50 border-l-4 border-[var(--esan-red)] p-6">
-        <p class="text-gray-700 leading-relaxed">
-            <strong>Los pagos indicados no están sujetos a devolución por ningún concepto.</strong>
-        </p>
+    <!-- DOCUMENTOS -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+
+            <i data-lucide="folder-open"
+               class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">
+
+                <strong>Documentos requeridos</strong>
+
+            </h3>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-5">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+
+                <i data-lucide="book-open"
+                   class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold mb-2">
+                    Sílabos
+                </h4>
+
+                <p class="text-sm text-gray-700">
+                    Sílabos de los cursos que desea convalidar.
+                </p>
+
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+
+                <i data-lucide="graduation-cap"
+                   class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold mb-2">
+                    Certificado de notas
+                </h4>
+
+                <p class="text-sm text-gray-700">
+                    Debidamente visado y sellado por la institución de procedencia.
+                </p>
+
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+
+                <i data-lucide="file-text"
+                   class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold mb-2">
+                    Solicitud
+                </h4>
+
+                <p class="text-sm text-gray-700">
+                    Solicitud de convalidación dirigida al asesor de inscripción.
+                </p>
+
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+
+                <i data-lucide="mail"
+                   class="w-7 h-7 text-[var(--esan-red)] mb-3"></i>
+
+                <h4 class="font-semibold mb-2">
+                    Carta al Director del DPA
+                </h4>
+
+                <p class="text-sm text-gray-700">
+                    Indicando los documentos entregados y solicitando la evaluación del expediente.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
 
     <!-- PROCEDIMIENTO -->
 
-    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
 
         <div class="flex items-center gap-3 mb-6">
-            <i data-lucide="clipboard-list" class="w-6 h-6 text-[var(--esan-red)]"></i>
-            <h3 class="text-xl font-serif text-gray-900">Procedimiento</h3>
+
+            <i data-lucide="list-checks"
+               class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">
+
+                <strong>Procedimiento</strong>
+
+            </h3>
+
         </div>
 
         <div class="space-y-5">
 
             <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
-                <p class="text-gray-700 leading-relaxed">El ingresante, una vez admitido, envía la solicitud de convalidación y los sílabos de los cursos a convalidar al asesor de inscripción asignado.</p>
+
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold shrink-0">
+                    1
+                </div>
+
+                <p class="text-gray-700">
+                    Enviar la solicitud de convalidación y los sílabos al asesor de inscripción asignado.
+                </p>
+
             </div>
 
             <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
-                <p class="text-gray-700 leading-relaxed">Los documentos necesarios son los sílabos de los cursos y certificados de notas, debidamente visados y sellados por la Secretaría General de la universidad de procedencia o autoridad equivalente.</p>
+
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold shrink-0">
+                    2
+                </div>
+
+                <p class="text-gray-700">
+                    Presentar el expediente completo junto con la boleta de pago y la carta dirigida al Director del DPA.
+                </p>
+
             </div>
 
             <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
-                <p class="text-gray-700 leading-relaxed">El expediente completo se presenta en la Coordinación Académica del DPA junto con la boleta del pago correspondiente y una carta dirigida al Director del DPA solicitando la evaluación del expediente.</p>
+
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold shrink-0">
+                    3
+                </div>
+
+                <p class="text-gray-700">
+                    Presentar la solicitud únicamente dentro del plazo establecido en el calendario académico.
+                </p>
+
             </div>
 
             <div class="flex items-start gap-4">
-                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
-                <p class="text-gray-700 leading-relaxed">La solicitud se presenta dentro del plazo establecido en el calendario académico; es el único momento en que puede realizarse el trámite. Las convalidaciones se hacen efectivas una vez aprobados los cursos que son requisito de aquellos convalidados.</p>
+
+                <div class="w-9 h-9 rounded-full bg-[var(--esan-red)] text-white flex items-center justify-center font-bold shrink-0">
+                    4
+                </div>
+
+                <p class="text-gray-700">
+                    La evaluación será realizada por la Universidad y las convalidaciones se harán efectivas cuando corresponda.
+                </p>
+
             </div>
 
         </div>
 
     </div>
 
-    <!-- CONDICIONES -->
+    <!-- CONSIDERACIONES -->
 
-    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
 
         <div class="flex items-center gap-3 mb-6">
-            <i data-lucide="badge-info" class="w-6 h-6 text-[var(--esan-red)]"></i>
-            <h3 class="text-xl font-serif text-gray-900">Condiciones</h3>
+
+            <i data-lucide="triangle-alert"
+               class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">
+
+                <strong>Consideraciones importantes</strong>
+
+            </h3>
+
         </div>
 
-        <ul class="list-disc pl-6 space-y-4 text-gray-700 leading-relaxed">
-            <li>Solo pueden presentar solicitud de convalidaciones quienes postularon bajo las modalidades de estudios superiores completos o incompletos.</li>
-            <li>La convalidación procede cuando los contenidos y competencias adquiridas correspondan a la asignatura a convalidar, con una antigüedad máxima de <strong>8 años</strong>. La Universidad puede requerir un examen de los cursos materia de convalidación cuando lo considere necesario.</li>
-            <li>El alumno proveniente de un instituto con convenio de convalidación de cursos suscrito está exonerado del procedimiento y de los pagos descritos, siempre que se cumpla la antigüedad indicada. Estas convalidaciones se realizan de manera automática. Si desea convalidar cursos adicionales a los del convenio, deberá seguir el procedimiento regular.</li>
+        <ul class="list-disc pl-6 space-y-3 text-gray-700 leading-relaxed">
+
+            <li>Solo pueden solicitar convalidación los ingresantes que postularon bajo las modalidades de estudios superiores completos o estudios superiores incompletos.</li>
+
+            <li>La convalidación procede cuando existe equivalencia entre los contenidos y competencias de las asignaturas.</li>
+
+            <li>La Universidad ESAN podrá solicitar un examen de evaluación cuando lo considere necesario.</li>
+
+            <li>Las convalidaciones solo pueden solicitarse durante el plazo establecido en el calendario académico.</li>
+
         </ul>
+
+    </div>
+
+    <!-- CONVENIOS -->
+
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+        <div class="flex items-center gap-3 mb-6">
+
+            <i data-lucide="handshake"
+               class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-xl font-serif text-gray-900">
+
+                <strong>Convalidaciones por convenio</strong>
+
+            </h3>
+
+        </div>
+
+        <div class="rounded-xl bg-gray-50 border border-gray-200 p-5">
+
+            <p class="text-gray-700 leading-relaxed">
+
+                Los alumnos provenientes de instituciones con convenio de convalidación con la Universidad ESAN están exonerados del procedimiento y del pago para los cursos contemplados en dicho convenio, siempre que cumplan con las condiciones establecidas. Si desean solicitar la convalidación de cursos adicionales, deberán seguir el procedimiento regular.
+
+            </p>
+
+        </div>
 
     </div>
 
