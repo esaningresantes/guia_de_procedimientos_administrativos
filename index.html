@@ -625,7 +625,7 @@ html: `
             <div>
 
                 <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
-                    Sección II · Numeral 2
+                    Sección II - Numeral 2
                 </p>
 
                 <h2 class="text-3xl font-serif text-gray-900">
@@ -754,13 +754,13 @@ html: `
         <div class="flex items-center gap-4">
 
             <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
-                <i data-lucide="credit-card" class="w-7 h-7 text-white"></i>
+                <i data-lucide="dollar-sign" class="w-7 h-7 text-white"></i>
             </div>
 
             <div>
 
                 <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
-                    Sección III · Numeral 3.1
+                    Sección III - Numeral 3.1
                 </p>
 
                 <h2 class="text-3xl font-serif text-gray-900">
@@ -784,15 +784,16 @@ html: `
                 <h3 class="text-xl font-serif text-gray-900"><strong>Primera boleta</strong></h3>
             </div>
 
-            <p class="text-5xl font-bold text-[var(--esan-red)] mb-4">S/ 1,450.00</p>
-
             <p class="text-gray-700 leading-relaxed">
-                Incluye el derecho de matrícula (<strong>S/ 300.00</strong>) y la primera cuota de derechos de enseñanza. Quienes resulten admitidos y hayan presentado los documentos solicitados por la Oficina de Admisión de Pregrado deberán efectuar este pago para poder matricularse.
+                 Quienes resulten admitidos a la Universidad bajo cualquier modalidad y hayan presentado los
+documentos solicitados por la Oficina de Admisión de Pregrado deberán efectuar el pago de
+la primera boleta que incluye el derecho de matrícula (<strong>S/ 300.00</strong>) y la primera cuota de derechos de enseñanza.
             </p>
 
             <div class="mt-5 bg-gray-50 border border-gray-200 rounded-xl p-4">
                 <p class="text-sm text-gray-700 leading-relaxed">
-                    No estarán habilitados para pagar la primera boleta (incluye matrícula) quienes tengan documentación pendiente de entrega a la Oficina de Admisión.
+                    No estarán habilitados para realizar el pago de la primera boleta (incluye matrícula) quienes
+tengan documentación pendiente de entrega a la Oficina de Admisión.
                 </p>
             </div>
 
@@ -802,13 +803,14 @@ html: `
 
             <div class="flex items-center gap-3 mb-4">
                 <i data-lucide="calculator" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                <h3 class="text-xl font-serif text-gray-900">Valor del crédito</h3>
+                <h3 class="text-xl font-serif text-gray-900"><strong>Valor del crédito para las carreras de DPA</strong></h3>
             </div>
 
             <p class="text-5xl font-bold text-[var(--esan-red)] mb-4">S/ 230.00</p>
 
             <p class="text-gray-700 leading-relaxed">
-                El cálculo de las boletas de pago para los alumnos ingresantes se realiza en función al número de créditos matriculados, considerando este valor por crédito para las carreras del DPA.
+               El cálculo de las boletas de pago para los alumnos ingresantes se hará en función al número
+de créditos matriculados. 
             </p>
 
         </div>
@@ -822,18 +824,24 @@ html: `
         <div class="px-7 py-6 border-b border-gray-200">
             <div class="flex items-center gap-3">
                 <i data-lucide="table" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                <h3 class="text-xl font-serif text-gray-900">Ejemplo: alumno matriculado en 20 créditos</h3>
+                <h3 class="text-xl font-serif text-gray-900"><strong>Ejemplo: Alumno matriculado en 20 créditos</strong></h3>
             </div>
+
+			<p class="text-gray-700 leading-relaxed">
+				A modo de ejemplo, si en un semestre académico un estudiante se encuentra matriculado en
+20 créditos, el cálculo de las boletas se realiza de la siguiente manera:
+			</p>
+			
         </div>
 
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
                     <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
-                        <th class="px-6 py-4 text-left">Boleta</th>
-                        <th class="px-6 py-4 text-right">Matrícula (S/)</th>
-                        <th class="px-6 py-4 text-right">Derechos de enseñanza (S/)</th>
-                        <th class="px-6 py-4 text-right">Total (S/)</th>
+                        <th class="px-6 py-4 text-left">Boletas</th>
+                        <th class="px-6 py-4 text-right">Matrícula (en Soles)</th>
+                        <th class="px-6 py-4 text-right">Derechos de enseñanza* (en Soles)</th>
+                        <th class="px-6 py-4 text-right">Total (en Soles)</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -878,7 +886,7 @@ html: `
         </div>
 
         <p class="px-7 py-4 text-sm text-gray-500 leading-relaxed border-t border-gray-200">
-            Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre. Estos montos no consideran descuentos comerciales.
+            *Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre. Estos montos no consideran descuentos comerciales.
         </p>
 
     </div>
@@ -890,18 +898,25 @@ html: `
         <div class="px-7 py-6 border-b border-gray-200">
             <div class="flex items-center gap-3">
                 <i data-lucide="handshake" class="w-6 h-6 text-[var(--esan-red)]"></i>
-                <h3 class="text-xl font-serif text-gray-900">Alumnos provenientes de instituciones con convenio</h3>
+                <h3 class="text-xl font-serif text-gray-900"><strong>Alumnos provenientes de instituciones con convenio</strong></h3>
             </div>
         </div>
+
+		<p class="text-gray-700 leading-relaxed">
+		En el caso de alumnos que provienen de instituciones con las que se ha suscrito un convenio,
+<strong>el valor del crédito es de S/ 207.00.</strong> Considerando ello, si un alumno que proviene de una
+institución con convenio se matricula en 20 créditos, el cálculo de las boletas de pago se hará
+de la siguiente manera:
+</p>
 
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead>
                     <tr class="bg-[var(--esan-red)] text-white uppercase text-sm tracking-wide">
-                        <th class="px-6 py-4 text-left">Boleta</th>
-                        <th class="px-6 py-4 text-right">Matrícula (S/)</th>
-                        <th class="px-6 py-4 text-right">Derechos de enseñanza (S/)</th>
-                        <th class="px-6 py-4 text-right">Total (S/)</th>
+                        <th class="px-6 py-4 text-left">Boletas</th>
+                        <th class="px-6 py-4 text-right">Matrícula (en Soles)</th>
+                        <th class="px-6 py-4 text-right">Derechos de enseñanza* (en Soles)</th>
+                        <th class="px-6 py-4 text-right">Total (en Soles)</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -946,7 +961,9 @@ html: `
         </div>
 
         <p class="px-7 py-4 text-sm text-gray-500 leading-relaxed border-t border-gray-200">
-            Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en un semestre.
+            *Los derechos de enseñanza han sido calculados considerando 20 créditos matriculados en
+un semestre. En el caso de convenio con instituciones, se establece un descuento de 10%
+sobre los derechos de enseñanza.
         </p>
 
     </div>
@@ -957,14 +974,29 @@ html: `
 
         <div class="flex items-center gap-3 mb-5">
             <i data-lucide="info" class="w-6 h-6 text-[var(--esan-red)]"></i>
-            <h3 class="text-xl font-serif text-gray-900">Información importante</h3>
+            <h3 class="text-xl font-serif text-gray-900"><strong>Información importante</strong></h3>
         </div>
 
         <ul class="list-disc pl-6 space-y-3 text-gray-700 leading-relaxed">
             <li>Cualquier modificación a los montos de pensiones será comunicada oportunamente.</li>
-            <li>El pago por derechos académicos podrá realizarse en los bancos detallados en la sección III, indicando en ventanilla la modalidad de pago y el código de alumno, o a través de la banca por internet.</li>
-            <li>Para revisar pagos pendientes, boletas vencidas y otros detalles, el alumno puede ingresar a <strong>Estado de Cuenta y Pagos Visa</strong> en el Menú Principal de la plataforma virtual (ruta: Mi Portal / Académico / Pagos / Pagos Visa) o mediante <a href="https://pagos.esan.edu.pe/alumno/inicio/logon" target="_blank" class="text-[var(--esan-red)] font-semibold hover:underline">pagos.esan.edu.pe</a>. También permite pagos en línea con tarjetas de crédito, ingresando el código de alumno y el DNI.</li>
-            <li>En caso de incumplimiento en el pago de boletas vencidas, la Universidad ESAN queda facultada a trasladar la documentación a su área legal para las acciones de recuperación de deuda, tercerizar la cobranza o transferir los derechos de cobro a terceros, respetando la normativa de protección de datos. Asimismo, podrá reportar a las Centrales de Riesgo, conforme a la normativa vigente.</li>
+			<li>Para revisar sus pagos pendientes, boletas vencidas y otros detalles, el alumno podrá ingresar
+a la opción Estado de Cuenta y Pagos Visa que se ubica en el Menú Principal de la plataforma
+virtual. <strong>Ruta: Mi Portal / Académico /Pagos /Pagos Visa o mediante el siguiente enlace: <a href="https://pagos.esan.edu.pe/alumno/inicio/logon" target="_blank" class="text-[var(--esan-red)] font-semibold hover:underline">pagos.esan.edu.pe</a>. Asimismo, en esta opción podrá realizar
+pagos en línea con tarjetas de crédito. Para acceder a esta opción deberá ingresar su código
+de alumno o usuario de la universidad y el número de su Documento Nacional de Identidad
+(registrado al momento de su inscripción como postulante a la Universidad).
+            <li>En caso de incumplimiento de pagos de las boletas vencidas, la Universidad ESAN queda
+facultada a trasladar la documentación correspondiente a su área legal para las acciones de
+recuperación de la deuda que corresponda, a tercerizar la cobranza, o, de ser el caso, a
+transferir los derechos de cobro a terceros, respetando la regulación de protección de datos
+personales. Asimismo, la Universidad está facultada a informar a las Centrales de Riesgo
+sobre los incumplimientos de pago, acorde a la normativa vigente.</li>
+            <li>El monto de los derechos académicos podrá ser actualizado para ciclos académicos
+posteriores con motivo de la inflación y/o aumento de precio de los bienes y servicios
+necesarios para la continuidad de la prestación del servicio educativo, observando los
+procedimientos y disposiciones legales vigentes. Cualquier modificación será comunicada a
+los estudiantes antes del inicio del proceso de matrícula del ciclo correspondiente, en
+observancia de la normativa vigente.</li>
         </ul>
 
     </div>
@@ -972,10 +1004,10 @@ html: `
 `
 },
 
-// IV. CREDENCIALES
+// IV. MEDIOS DE PAGO
 IV: {
-title: "IV. Credenciales",
-icon: "key-round",
+title: "IV. Medios de Pago",
+icon: "credit-card",
 html: `
 
 <div class="max-w-5xl mx-auto animate-[fadeIn_0.5s] space-y-8">
@@ -987,17 +1019,17 @@ html: `
         <div class="flex items-center gap-4">
 
             <div class="w-14 h-14 rounded-xl bg-[var(--esan-red)] flex items-center justify-center">
-                <i data-lucide="key-round" class="w-7 h-7 text-white"></i>
+                <i data-lucide="credit-card" class="w-7 h-7 text-white"></i>
             </div>
 
             <div>
 
                 <p class="text-sm uppercase tracking-[0.2em] text-[var(--esan-red)] font-semibold">
-                    Sección IV · 2.4
+                    Sección IV - Numeral 3.2 y 3.3
                 </p>
 
                 <h2 class="text-3xl font-serif text-gray-900">
-                    Entrega de credenciales y contraseñas
+                    <strong>Medios de Pago y Descuento por Pronto Pago</strong>
                 </h2>
 
             </div>
@@ -1006,29 +1038,291 @@ html: `
 
     </div>
 
-    <div class="glass rounded-2xl p-8 border-l-4 border-[var(--esan-red)]">
+	<!-- MEDIOS DE PAGO -->
 
-        <div class="space-y-4 text-gray-700 leading-relaxed">
+    <div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
 
-            <p>
-                Los ingresantes recibirán en su correo electrónico personal el número de código de alumno asignado.
-            </p>
+        <div class="flex items-center gap-3 mb-3">
 
-            <p>
-                Asimismo, se entregará el usuario y contraseña de acceso al portal de alumnos y al correo electrónico institucional.
-            </p>
+            <i data-lucide="wallet-cards"
+               class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+            <h3 class="text-2xl font-serif text-gray-900">
+
+                <strong>Medios de pago</strong>
+
+            </h3>
 
         </div>
 
-        <div class="mt-6 rounded-xl bg-red-50 border border-red-200 p-5 flex gap-4">
-            <i data-lucide="shield-alert" class="w-6 h-6 text-[var(--esan-red)] mt-1"></i>
-            <p class="text-gray-700 leading-relaxed">
-                El uso de dichos accesos es <strong>personal e intransferible</strong>.
-            </p>
+        <p class="text-gray-700 mb-7 leading-relaxed">
+
+            Puede emplear cualquiera de las siguientes opciones para efectuar el pago de la matrícula y de los derechos de enseñanza:
+
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- YAPE -->
+
+            <div class="glass rounded-2xl p-6 border-l-4 border-[var(--esan-red)]">
+
+                <div class="flex items-center gap-3 mb-4">
+
+                    <i data-lucide="smartphone"
+   class="w-6 h-6 shrink-0 text-purple-600"></i>
+
+                    <h4 class="text-lg font-serif text-gray-900">
+
+                        <strong>YAPE</strong>
+
+                    </h4>
+
+                </div>
+
+                <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700 leading-relaxed">
+
+                    <li>Ingresar a la aplicación Yape.</li>
+
+                    <li>Seleccionar <strong>"Yapear servicios"</strong> y luego <strong>"Educación"</strong>.</li>
+
+                    <li>Elegir la empresa <strong>"FIDEICOMISO ESAN"</strong>.</li>
+
+                    <li>Seleccionar el servicio <strong>"ESAN Pensiones Soles"</strong>.</li>
+
+                    <li>Ingresar el código del cliente.</li>
+
+                    <li>Elegir el recibo a pagar y luego presionar <strong>"Yapear servicio"</strong>.</li>
+
+                </ul>
+
+            </div>
+
+            <!-- BCP -->
+
+            <div class="glass rounded-2xl p-6 border-l-4 border-[var(--esan-red)]">
+
+                <div class="flex items-center gap-3 mb-4">
+
+                    <i data-lucide="landmark"
+   class="w-6 h-6 shrink-0 text-orange-500"></i>
+
+                    <h4 class="text-lg font-serif text-gray-900">
+
+                        <strong>BCP</strong>
+
+                    </h4>
+
+                </div>
+
+                <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700 leading-relaxed">
+
+                    <li>En tu banca móvil, seleccionar <strong>"Pagar servicio"</strong>.</li>
+
+                    <li>Elegir la empresa <strong>"FIDEICOMISO ESAN"</strong>.</li>
+
+                    <li>Seleccionar el servicio: <strong>"PREGRADO PENSIONES SOLES"</strong>.</li>
+
+                    <li>Ingresar el código de alumno y seleccionar la boleta a cancelar.</li>
+
+                </ul>
+
+                <div class="mt-5 pt-4 border-t border-gray-200">
+
+                    <p class="font-semibold text-gray-900 mb-2">
+
+                        Opción de pago en ventanilla
+
+                    </p>
+
+					<p class="text-sm text-gray-700 leading-relaxed">
+					Para realizar el pago en nuestras cuentas bancarias, deberá indicar la modalidad correspondiente y el código del alumno, a fin de identificar correctamente el pago. 
+					</p>
+
+					<p class="text-sm text-gray-700 leading-relaxed">
+					En el caso del Banco de Crédito: <strong>BCP - Fideicomiso ESAN - Modalidad: ESAN PENSIONES SOLES.</strong>
+                	</p>
+				
+				</div>
+
+            </div>
+
+            <!-- BBVA -->
+
+            <div class="glass rounded-2xl p-6 border-l-4 border-[var(--esan-red)]">
+
+                <div class="flex items-center gap-3 mb-4">
+
+                    <i data-lucide="building-2"
+   class="w-6 h-6 shrink-0 text-blue-600"></i>
+
+                    <h4 class="text-lg font-serif text-gray-900">
+
+                        <strong>BBVA</strong>
+
+                    </h4>
+
+                </div>
+
+                <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700 leading-relaxed">
+
+                    <li>En tu banca móvil, seleccionar <strong>"Pagar servicio"</strong>.</li>
+
+                    <li>Elegir <strong>"ESAN PENSIONES SOLES"</strong>.</li>
+
+                    <li>Ingresar el código SAP (Código de Alumno = código SAP).</li> 
+
+                    <li>Seleccionar la boleta a cancelar.</li>
+
+                </ul>
+
+                <div class="mt-5 pt-4 border-t border-gray-200">
+
+                    <p class="font-semibold text-gray-900 mb-2">
+
+                        Opción de pago en ventanilla
+
+                    </p>
+
+                    <p class="text-sm text-gray-700 leading-relaxed">
+					Para realizar el pago en nuestras cuentas bancarias, deberá indicar la modalidad correspondiente y el código del alumno, a fin de identificar correctamente el pago. 
+					</p>
+					<p class="text-sm text-gray-700 leading-relaxed">
+					En el caso del Banco Continental: <strong>BBVA - Modalidad: ESAN PENSIONES SOLES.</strong>
+                	</p>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 
+	<!-- DESCUENTO POR PRONTO PAGO -->
+
+<div class="glass rounded-2xl p-7 border-l-4 border-[var(--esan-red)]">
+
+    <div class="flex items-center gap-3 mb-6">
+
+        <i data-lucide="badge-percent"
+           class="w-6 h-6 text-[var(--esan-red)]"></i>
+
+        <h3 class="text-2xl font-serif text-gray-900">
+
+            <strong>Descuento por Pronto Pago</strong>
+
+        </h3>
+
+    </div>
+
+    <p class="text-gray-700 leading-relaxed mb-6">
+
+        Los alumnos que deseen cancelar el ciclo académico de forma anticipada podrán acceder al
+        <strong>10% de descuento</strong> sobre los derechos académicos, siempre que cumplan con las
+        condiciones establecidas por la Universidad.
+
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- BENEFICIO -->
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+
+            <div class="flex items-center gap-3 mb-4">
+
+                <i data-lucide="circle-dollar-sign"
+                   class="w-6 h-6 shrink-0 text-green-600"></i>
+
+                <h4 class="text-lg font-semibold text-gray-900">
+
+                    Beneficio
+
+                </h4>
+
+            </div>
+
+            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700 leading-relaxed">
+
+                <li>Otorga un <strong>10% de descuento</strong> en los derechos académicos.</li>
+
+                <li>Se aplica únicamente desde la <strong>segunda hasta la quinta boleta</strong>.</li>
+
+                <li>No aplica al <strong>derecho de matrícula</strong>.</li>
+
+                <li>Válido únicamente para <strong>ciclos académicos regulares</strong>.</li>
+
+            </ul>
+
+        </div>
+
+        <!-- REQUISITOS -->
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+
+            <div class="flex items-center gap-3 mb-4">
+
+                <i data-lucide="clipboard-check"
+                   class="w-6 h-6 shrink-0 text-blue-600"></i>
+
+                <h4 class="text-lg font-semibold text-gray-900">
+
+                    Requisitos
+
+                </h4>
+
+            </div>
+
+            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700 leading-relaxed">
+
+                <li>Estar matriculado en un mínimo de <strong>12 créditos académicos</strong>.</li>
+
+                <li>Inscribirse mediante el formulario publicado en la plataforma virtual.</li>
+
+                <li>Presentar la solicitud dentro del plazo establecido en el calendario financiero del DPA.</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- IMPORTANTE -->
+
+    <div class="mt-7 rounded-xl bg-gray-50 border border-gray-200 p-5">
+
+        <div class="flex items-start gap-3">
+
+            <i data-lucide="triangle-alert"
+               class="w-6 h-6 shrink-0 text-[var(--esan-red)] mt-0.5"></i>
+
+            <div>
+
+                <p class="font-semibold text-gray-900 mb-2">
+
+                    Consideraciones importantes
+
+                </p>
+
+                <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700 leading-relaxed">
+
+                    <li>Si no presenta la solicitud dentro de la fecha establecida, deberá efectuar el pago normal de sus boletas.</li>
+
+                    <li>En caso de retiro voluntario de cursos, módulos o del ciclo académico, se realizará una nueva liquidación utilizando el valor regular de los derechos académicos, dejando sin efecto el descuento inicialmente otorgado.</li>
+
+                    <li>Una vez efectuado el pago total del ciclo académico, no se aceptarán devoluciones o regularizaciones posteriores, salvo en los casos previstos por la normativa vigente.</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+	
 </div>
 `
 },
